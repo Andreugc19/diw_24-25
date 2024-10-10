@@ -1,0 +1,223 @@
+/* Removes default margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles: font, background, and text color */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FEF9FF;
+    color: #252323;
+}
+
+/* Header: flex layout and colors */
+header {
+    display: flex;
+    align-items: center;
+    background-color: #434960;
+    color: #FEF9FF;
+    padding: 10px 15px; /* Internal spacing */
+    height: 60px;
+    justify-content: space-between;
+}
+
+/* Main menu: hidden on mobile */
+.nav-primary {
+    display: none;
+    color: #CAD178;
+}
+
+/* Logo: uses flex for layout */
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+
+/* Spacing between the logo and other elements */
+.nav-logo .menu-item {
+    margin-right: 15px;
+}
+
+/* Main logo styles */
+.nav-logo img {
+    max-width: 100px;
+    height: auto;
+}
+
+/* Hides the square logo on mobile */
+.nav-logo img.logo-square {
+    display: none;
+}
+
+/* Menu icons: alignment and spacing */
+.nav-icons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px; /* Spacing between icons */
+}
+
+/* Menu text: hidden on mobile */
+.nav-icons .nav-text {
+    display: none;
+    color: #CAD178;
+}
+
+/* Menu items: cursor changes to pointer */
+.nav-primary .menu-item,
+.nav-logo .menu-item,
+.nav-icons .menu-item {
+    cursor: pointer;
+    color: #CAD178;
+}
+
+/* Icon style: margin and color */
+.icon {
+    margin-right: 5px;
+    color: #CAD178;
+}
+
+/* Main container: column layout */
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Product container: flex layout and centered */
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+    order: 2;
+}
+
+/* Product item styles: centered and fixed size */
+.item {
+    background-color: #95818D;
+    color: #252323;
+    margin: 10px;
+    text-align: center;
+    width: 230px;
+    height: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hover effect: cursor change and opacity */
+.item:hover {
+    cursor: pointer;
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+}
+
+/* Aside styles: background and spacing */
+aside {
+    background-color: #CAD178;
+    padding: 20px;
+    margin: 0;
+    order: 1;
+}
+
+/* Links inside aside: block display and no underline */
+aside nav a {
+    display: block;
+    color: #000000;
+    text-decoration: none;
+    margin: 15px 0;
+    transition: all 0.2s ease;
+}
+
+/* Hover effect for links */
+aside nav a:hover {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+/* Tablet: header and logo adjustments */
+@media (min-width: 768px) {
+    header {
+        height: 100px; /* Increases header height */
+    }
+
+    /* Shows the square logo on tablet */
+    .nav-logo img.logo-square {
+        display: block;
+        max-height: 80px;
+    }
+
+    /* Hides the landscape logo on tablet */
+    .nav-logo img.logo-landscape {
+        display: none;
+    }
+
+    /* Shows menu items on tablet */
+    .nav-icons .menu-item {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Shows menu text on tablet */
+    .nav-icons .nav-text {
+        display: inline;
+    }
+}
+
+/* Desktop: layout and aside adjustments */
+@media (min-width: 992px) {
+    .nav-primary {
+        display: flex;
+        flex: 1;
+        justify-content: flex-start;
+        margin-right: 20px;
+        gap: 15px;
+    }
+
+    .nav-logo {
+        position: absolute;
+        left: 50%;
+    }
+
+    /* Hides the menu icon on desktop */
+    .nav-logo .fas.fa-bars {
+        display: none;
+    }
+
+    /* Centers the product container on desktop */
+    .products-container {
+        margin-left: 225px;
+        padding-top: 0;
+        row-gap: 20px;
+        height: calc(100vh - 100px);
+    }
+
+    .products-container .item {
+        margin-bottom: 20px;
+    }
+
+    /* Aside on desktop: fixed position and shadows */
+    aside {
+        position: absolute;
+        left: 0;
+        top: 100px;
+        width: 200px;
+        height: calc(100vh - 100px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Aside menu adjustments */
+    aside nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        flex-grow: 1;
+    }
+}
