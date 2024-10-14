@@ -39,31 +39,31 @@ header {
 
 /* Menú de navegación para escritorio */
 nav.desktop-nav {
-    display: flex; /* Mostrar en todo momento */
-    flex-direction: row; /* Alineación horizontal */
-    align-items: center; /* Alineamos verticalmente los elementos del nav */
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
 }
 
 /* Enlaces en el menú de navegación */
 nav.desktop-nav .nav-links {
-    display: flex; /* Para mostrar los enlaces en línea */
+    display: flex; 
 }
 
 nav.desktop-nav a {
-    margin: 0 20px; /* Espaciado entre enlaces */
+    margin: 0 20px; 
     font-size: 18px;
-    color: white; /* Cambiar color de texto a blanco */
-    text-decoration: none; /* Quitar subrayado */
+    color: white; 
+    text-decoration: none; 
 }
 
 nav.desktop-nav a:hover {
-    text-decoration: underline; /* Añadir subrayado al pasar el ratón */
+    text-decoration: underline; 
 }
 
 /* Icono del menú para móvil */
 .menu-icon {
-    display: none; /* Ocultar por defecto */
-    font-size: 24px; /* Tamaño del icono */
+    display: none; 
+    font-size: 24px; 
     cursor: pointer;
 }
 
@@ -84,31 +84,31 @@ button:hover {
 
 /* Menú de navegación para móviles */
 .mobile-nav {
-    display: none; /* Ocultar por defecto */
+    display: none; 
     background: #395C6b;
     position: absolute;
-    top: 60px; /* Justo debajo del header */
+    top: 60px; 
     left: 0;
     right: 0;
-    z-index: 999; /* Asegúrate de que esté en frente */
+    z-index: 999; 
 }
 
 /* Mostrar el menú cuando está activo */
 .mobile-nav.active {
-    display: block; /* Mostrar cuando está activo */
+    display: block; 
 }
 
 .mobile-nav .nav-links {
     display: flex;
-    flex-direction: column; /* Alineación vertical */
-    align-items: center; /* Centrar elementos */
+    flex-direction: column;
+    align-items: center; 
 }
 
 .mobile-nav a {
-    margin: 10px 0; /* Espaciado entre enlaces */
+    margin: 10px 0; 
     color: white;
     font-size: 18px;
-    text-decoration: none; /* Quitar subrayado */
+    text-decoration: none; 
 }
 
 /* Contenedor principal */
@@ -167,7 +167,7 @@ footer a {
 
     /* Mostrar icono de menú en escritorio */
     .menu-icon {
-        display: none; /* No mostrar en escritorio */
+        display: none; 
     }
 
     /* Layout de contenido: Imagen a la izquierda y texto a la derecha */
@@ -209,11 +209,11 @@ footer a {
 @media (max-width: 767px) {
     /* Mostrar icono de menú en móvil */
     .menu-icon {
-        display: block; /* Mostrar en móvil */
+        display: block;
     }
 
     /* Esconder menú de navegación en móvil */
     nav.desktop-nav {
-        display: none; /* No mostrar en móvil */
+        display: none;
     }
 }
