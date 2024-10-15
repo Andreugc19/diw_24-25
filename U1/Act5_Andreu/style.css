@@ -1,17 +1,28 @@
 /* Reset some default styles */
-body, h1, p {
+* {
     margin: 0;
     padding: 0;
 }
 
 /* Body and overall layout */
 body {
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; 
     font-family: Arial, sans-serif;
     background-color: #B5E1D9;
     color: #000;
     line-height: 1.6;
-    margin: 0;
-    padding: 0;
+}
+
+/* Contenedor principal */
+.container {
+    flex: 1; 
+    padding: 15px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Header */
@@ -23,7 +34,6 @@ header {
     justify-content: space-between;
     align-items: center;
     min-height: 60px;
-    position: relative;
     z-index: 1000;
 }
 
@@ -111,25 +121,17 @@ button:hover {
     text-decoration: none; 
 }
 
-/* Contenedor principal */
-.container {
-    padding: 15px;
-    margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .c-viewer__iframe {
     width: 100%;
     height: 300px;
     border: none;
+    border-radius: 15px;
 }
 
 .content {
     background: white;
     padding: 15px;
-    border-radius: 8px;
+    border-radius: 15px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     margin-top: 15px;
     text-align: center;
@@ -141,12 +143,15 @@ button:hover {
 
 /* Footer */
 footer {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
     background: #395C6B;
     color: white;
-    text-align: center;
-    padding: 15px;
+    padding: 15px 20px; 
 }
 
+/* Iconos en el footer */
 footer a {
     margin: 0 10px;
     color: white;
@@ -172,16 +177,16 @@ footer a {
 
     /* Layout de contenido: Imagen a la izquierda y texto a la derecha */
     .container {
-        max-width: 1200px;
+        max-width: 1800px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        align-items: flex-start;
+        align-items: center;
     }
 
     .c-viewer__iframe {
         width: 60%;
-        height: 500px;
+        height: 600px;
     }
 
     .content {
@@ -196,7 +201,7 @@ footer a {
     }
 
     footer {
-        text-align: right;
+        position: relative;
     }
 
     footer a {
