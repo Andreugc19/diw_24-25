@@ -1,0 +1,35 @@
+//coment
+/*multiline comment*/
+$primary: rgb(149, 218, 149);
+$secundary: rgb(39, 102, 39);
+$width_desktop: 90%;
+$box_width: 100px; 
+$num_boxes: 3;
+$box_color: rgb(24, 77, 24);
+
+
+@mixin sizes ($width, $height){
+    width: $width;
+    height: $height;
+}
+
+body {
+    background-color: $primary;
+    @include sizes($width_desktop, 100vh);
+    border: 1px $secundary solid;
+    margin: 0 auto;
+}
+
+.container {
+    @include sizes(500px, 500px);
+    border: 1px $secundary solid;
+}
+
+@for $i from 1 through $num_boxes {
+    .box-#{$i} {
+        width: $box_width * $i;
+        height: $box_width;
+        background-color: lighten($box-color, 10% * $i);
+        margin-right: 15px;
+    }
+}
