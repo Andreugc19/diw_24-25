@@ -10,14 +10,14 @@ body {
     flex-direction: column; 
     min-height: 100vh; 
     font-family: Arial, sans-serif;
-    background-color: #B5E1D9; /* Color de fondo */
+    background-color: #B5E1D9;
     color: #000;
     line-height: 1.6;
 }
 
 /* Header */
 header {
-    background: linear-gradient(135deg, #395C6b, #64A0BA); /* Gradiente en el fondo del header */
+    background: linear-gradient(135deg, #395C6b, #64A0BA);
     color: white;
     padding: 10px 20px;
     display: flex;
@@ -25,7 +25,7 @@ header {
     align-items: center;
     min-height: 60px;
     z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra del header */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Logo a la izquierda */
@@ -36,11 +36,11 @@ header {
 
 .logo img {
     max-width: 60px;
-    transition: transform 0.3s; /* Transición para el logo */
+    transition: transform 0.3s;
 }
 
 .logo img:hover {
-    transform: scale(1.1); /* Efecto de aumento al pasar el mouse */
+    transform: scale(1.1);
 }
 
 /* Menú de navegación para escritorio */
@@ -60,12 +60,12 @@ nav.desktop-nav a {
     font-size: 18px;
     color: white; 
     text-decoration: none; 
-    transition: color 0.3s; /* Transición suave para el color */
+    transition: color 0.3s;
 }
 
 nav.desktop-nav a:hover {
     text-decoration: underline; 
-    color: #B5E1D9; /* Cambio de color al pasar el mouse */
+    color: #B5E1D9;
 }
 
 /* Icono del menú para móvil */
@@ -73,11 +73,11 @@ nav.desktop-nav a:hover {
     display: none; 
     font-size: 24px; 
     cursor: pointer;
-    transition: transform 0.3s; /* Transición para el icono del menú */
+    transition: transform 0.3s;
 }
 
 .menu-icon:hover {
-    transform: rotate(90deg); /* Rotación al pasar el mouse */
+    transform: rotate(90deg);
 }
 
 /* Botón de login dentro del menú */
@@ -89,12 +89,12 @@ button {
     padding: 10px 20px;
     cursor: pointer;
     font-size: 16px;
-    transition: background 0.3s ease, transform 0.3s; /* Transición para el botón */
+    transition: background 0.3s ease, transform 0.3s;
 }
 
 button:hover {
     background: #5a8ba0;
-    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+    transform: scale(1.05);
 }
 
 /* Menú de navegación para móviles */
@@ -136,27 +136,27 @@ button:hover {
 /* Imagenes más grandes y adaptativas */
 .image-item {
     position: relative;
-    text-align: center; /* Centra el texto debajo de la imagen */
-    overflow: hidden; /* Asegura que no se salga el contenido */
-    transition: transform 0.3s; /* Transición para las imágenes */
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.3s;
 }
 
 .image-item:hover {
-    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Sombra en hover */
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .image-item img {
     width: 100%;
     height: auto;
     display: block;
-    max-height: 500px; /* Limitar la altura máxima */
-    object-fit: cover; /* Asegura que la imagen mantenga su proporción sin distorsionarse */
+    max-height: 500px;
+    object-fit: cover;
 }
 
 /* Texto sobre las imágenes */
 .image-text {
-    display: none; /* Esconder el texto por defecto */
+    display: none;
 }
 
 /* Modal */
@@ -177,15 +177,15 @@ button:hover {
 /* Mostrar texto en el modal */
 .modal-content {
     max-width: 90%;
-    max-height: 70%; /* Ajustamos la altura para que se vea mejor */
+    max-height: 70%;
     margin: auto;
     display: block;
-    transition: transform 0.3s; /* Transición para el contenido del modal */
+    transition: transform 0.3s;
 }
 
 /* Estilo para mostrar texto en el modal */
 #modal-caption {
-    margin-top: 10px; /* Espacio entre la imagen y el texto */
+    margin-top: 10px;
     color: #fff;
     text-align: center;
     font-size: 18px;
@@ -198,11 +198,11 @@ button:hover {
     color: #fff;
     font-size: 40px;
     cursor: pointer;
-    transition: transform 0.3s; /* Transición para el botón de cerrar */
+    transition: transform 0.3s;
 }
 
 .close:hover {
-    transform: scale(1.2); /* Efecto de aumento al pasar el mouse */
+    transform: scale(1.2);
 }
 
 /* Footer */
@@ -211,7 +211,7 @@ footer {
     justify-content: flex-end; 
     align-items: center;
     padding: 10px 20px;
-    background: linear-gradient(135deg, #395C6b, #64A0BA); /* Gradiente en el fondo del footer */
+    background: linear-gradient(135deg, #395C6b, #64A0BA);
 }
 
 /* Estilo para los enlaces en el pie de página */
@@ -220,11 +220,11 @@ footer a {
     color: white; 
     font-size: 24px;
     text-decoration: none;
-    transition: color 0.3s; /* Transición para los enlaces */
+    transition: color 0.3s;
 }
 
 footer a:hover {
-    color: #B5E1D9; /* Cambio de color al pasar el mouse */
+    color: #B5E1D9;
 }
 
 /* Media Queries */

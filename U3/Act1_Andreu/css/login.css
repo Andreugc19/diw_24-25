@@ -20,12 +20,12 @@ body {
 
 /* Contenedor de la Imagen de Fondo */
 .image-background {
-    flex: 1; /* 25% del contenedor */
+    flex: 1;
 }
 
 /* Contenedor del Formulario */
 .form-container {
-    flex: 2; /* 75% del contenedor */
+    flex: 2;
     background: rgba(255, 255, 255, 0.7);
     padding: 30px; 
     border-radius: 8px;

@@ -27,7 +27,7 @@ body {
 
 /* Header */
 header {
-    background: linear-gradient(135deg, #395C6b, #64A0BA); /* Gradiente en el fondo del header */
+    background: linear-gradient(135deg, #395C6b, #64A0BA);
     color: white;
     padding: 10px 20px;
     display: flex;
@@ -86,7 +86,7 @@ button {
     padding: 10px 20px;
     cursor: pointer;
     font-size: 16px;
-    transition: background 0.3s ease; /* Transición para el botón */
+    transition: background 0.3s ease;
 }
 
 button:hover {
@@ -127,21 +127,21 @@ button:hover {
     height: 300px;
     border: none;
     border-radius: 15px;
-    transition: transform 0.3s ease; /* Transición para el iframe */
+    transition: transform 0.3s ease;
 }
 
 .c-viewer__iframe:hover {
-    transform: scale(1.05); /* Transformación para el iframe al hacer hover */
+    transform: scale(1.05);
 }
 
 .content {
     background: white;
     padding: 15px;
     border-radius: 15px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra para la caja de contenido */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     margin-top: 15px;
     text-align: center;
-    animation: fadeIn 1s ease-in-out; /* Animación de entrada para el contenido */
+    animation: fadeIn 1s ease-in-out;
 }
 
 .content h1 {
@@ -163,7 +163,7 @@ footer {
     display: flex;
     justify-content: flex-end; 
     align-items: center;
-    background: linear-gradient(135deg, #395C6b, #64A0BA); /* Gradiente en el fondo del header */
+    background: linear-gradient(135deg, #395C6b, #64A0BA);
     color: white;
     padding: 15px 20px; 
 }
