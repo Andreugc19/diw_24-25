@@ -3,13 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <title>Activities</title>
 </head>
 <body>
-    <h1>Activities</h1>
-    <h2>UD 1</h2>
-    <a href="./U1/Act5_Andreu/index.html">Activity 5</a>
-    <h2>UD 3</h2>
-    <a href="./U3/Act1_Andreu/index.html">Activity 1</a>
+    <div class="container">
+        <!-- Sidebar de unidades -->
+        <nav class="sidebar">
+            <h2>Unidades</h2>
+            <ul>
+                <li><a href="#" onclick="showActivities('UD1')">UD 1</a></li>
+                <li><a href="#" onclick="showActivities('UD3')">UD 3</a></li>
+                <!-- Agrega más unidades aquí si es necesario -->
+            </ul>
+        </nav>
+        
+        <!-- Contenido principal para mostrar actividades -->
+        <div class="main-content">
+            <div id="activities-container" class="cards-container">
+                <!-- Aquí se cargarán las tarjetas de actividades según la unidad seleccionada -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showActivities(unit) {
+            const activitiesContainer = document.getElementById("activities-container");
+            activitiesContainer.innerHTML = ""; // Limpiar contenido previo
+
+            if (unit === 'UD1') {
+                activitiesContainer.innerHTML = `
+                    <div class="card">
+                        <div class="card-title">Activity 5</div>
+                        <div class="card-description">Complete the tasks related to UD1's fifth activity.</div>
+                        <a href="./U1/Act5_Andreu/index.html" class="card-button">Go to Activity</a>
+                    </div>
+                `;
+            } else if (unit === 'UD3') {
+                activitiesContainer.innerHTML = `
+                    <div class="card">
+                        <div class="card-title">Activity 1</div>
+                        <div class="card-description">Explore the tasks of UD3's first activity.</div>
+                        <a href="./U3/Act1_Andreu/index.html" class="card-button">Go to Activity</a>
+                    </div>
+                `;
+            }
+        }
+    </script>
 </body>
 </html>
