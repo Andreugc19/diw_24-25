@@ -40,7 +40,6 @@ body {
     top: 20px; 
     left: 20px;
     text-decoration: none;
-    color: #64A0BA; 
     font-size: 24px;
 }
 
@@ -78,7 +77,6 @@ input[type="email"], input[type="password"] {
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    color: black;
     font-size: 18px; 
 }
 
@@ -86,7 +84,6 @@ input[type="email"], input[type="password"] {
 .forgot-password {
     display: block;
     margin-top: 15px;
-    color: black; 
     text-decoration: none;
     font-size: 16px; 
 }
@@ -100,9 +97,7 @@ input[type="email"], input[type="password"] {
 button {
     width: 100%;
     padding: 10px; 
-    background: #64A0BA; 
     border: none;
-    color: white; 
     border-radius: 4px;
     cursor: pointer;
     margin-top: 15px; 
