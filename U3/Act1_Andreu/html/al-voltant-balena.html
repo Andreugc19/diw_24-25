@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../scss/al-voltant-balena.css">
+    <link rel="stylesheet" href="../scss/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Portfolio Page</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="../index.html"><img src="../Images/Logo.png" alt="Logo"></a>
+        </div>
+
+        <nav class="desktop-nav">
+            <div class="nav-links">
+                <a href="#">Historia</a>
+                <a href="../html/porfolio.html">Portfolio</a>
+                <a href="#">Publicacions</a>
+                <a href="../html/al-voltant-balena.html">Al Voltant de la Balena</a>
+            </div>
+            <a href="../html/login.html"><button>Login</button></a>
+        </nav>
+
+        <div class="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <nav class="mobile-nav">
+        <div class="nav-links">
+            <a href="#">Historia</a>
+            <a href="../html/porfolio.html">Portfolio</a>
+            <a href="#">Publicacions</a>
+            <a href="../html/al-voltant-balena.html">Al Voltant de la Balena</a>
+            <a href="../html/login.html"><button>Login</button></a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="images-gallery">
+            <div class="gallery">
+                <img src="../Images/fitxa-1.jpeg" alt="Fitxa 1">
+                <img src="../Images/fitxa-2.jpeg" alt="Fitxa 2">
+                <img src="../Images/fitxa-3.jpeg" alt="Fitxa 3">
+                <img src="../Images/fitxa-4.jpeg" alt="Fitxa 4">
+            </div>
+        </section>
+    </main>    
+
+    <footer>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+    </footer>
+
+    <script>
+        const menuIcon = document.querySelector('.menu-icon');
+        const mobileNav = document.querySelector('.mobile-nav');
+
+        menuIcon.addEventListener('click', function() {
+            mobileNav.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

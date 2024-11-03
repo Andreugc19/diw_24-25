@@ -72,16 +72,6 @@ nav.desktop-nav a:hover {
   cursor: pointer;
 }
 
-/* Botón de login dentro del menú */
-button {
-  border: none;
-  border-radius: 20px;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background 0.3s ease;
-}
-
 /* Menú de navegación para móviles */
 .mobile-nav {
   display: none;

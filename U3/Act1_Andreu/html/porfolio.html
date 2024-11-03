@@ -17,9 +17,9 @@
         <nav class="desktop-nav">
             <div class="nav-links">
                 <a href="#">Historia</a>
-                <a href="../html/portfolio.html">Portfolio</a>
+                <a href="../html/porfolio.html">Portfolio</a>
                 <a href="#">Publicacions</a>
-                <a href="#">Al Voltant de la Balena</a>
+                <a href="../html/al-voltant-balena.html">Al Voltant de la Balena</a>
             </div>
             <a href="../html/login.html"><button>Login</button></a>
         </nav>
@@ -32,9 +32,9 @@
     <nav class="mobile-nav">
         <div class="nav-links">
             <a href="#">Historia</a>
-            <a href="../html/portfolio.html">Portfolio</a>
+            <a href="../html/porfolio.html">Portfolio</a>
             <a href="#">Publicacions</a>
-            <a href="#">Al Voltant de la Balena</a>
+            <a href="../html/al-voltant-balena.html">Al Voltant de la Balena</a>
             <a href="../html/login.html"><button>Login</button></a>
         </div>
     </nav>
@@ -290,6 +290,12 @@
         const modalImage = document.getElementById('modal-image');
         const modalCaption = document.getElementById('modal-caption');
         const closeBtn = document.querySelector('.close');
+        const menuIcon = document.querySelector('.menu-icon');
+        const mobileNav = document.querySelector('.mobile-nav');
+
+        menuIcon.addEventListener('click', function() {
+            mobileNav.classList.toggle('active');
+        });
 
         imageItems.forEach(item => {
             item.addEventListener('click', () => {
