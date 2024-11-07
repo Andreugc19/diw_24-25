@@ -1,10 +1,8 @@
-/* Reset some default styles */
 * {
   margin: 0;
   padding: 0;
 }
 
-/* Body and overall layout */
 body {
   display: flex;
   flex-direction: column;
@@ -16,7 +14,6 @@ body {
   letter-spacing: normal;
 }
 
-/* Botón de menú de accesibilidad */
 .access-menu-button {
   position: fixed;
   bottom: 20px;
@@ -31,7 +28,6 @@ body {
   font-size: 1rem;
 }
 
-/* Menú de accesibilidad */
 .accessibility-menu {
   position: fixed;
   bottom: 70px;
@@ -76,7 +72,6 @@ body {
   }
 }
 
-/* Mostrar menú cuando está visible */
 .accessibility-menu.visible {
   display: block;
   opacity: 1;
@@ -86,22 +81,25 @@ body {
 body[data-contrast="grayscale"] {
   filter: grayscale(100%);
 }
+
 body[data-contrast="dark"] {
   background: #333;
   color: #eee;
 }
+
 body[data-contrast="light"] {
   background: #fff;
   color: #000;
 }
+
 body[data-contrast="high-saturation"] {
   filter: saturate(200%);
 }
+
 body[data-contrast="low-saturation"] {
   filter: saturate(50%);
 }
 
-/* Contenedor principal */
 .container {
   flex: 1;
   padding: 15px;
@@ -111,7 +109,6 @@ body[data-contrast="low-saturation"] {
   align-items: center;
 }
 
-/* Header */
 header {
   padding: 10px 20px;
   display: flex;
