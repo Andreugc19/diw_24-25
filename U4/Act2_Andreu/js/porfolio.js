@@ -1,0 +1,107 @@
+const imageItems = document.querySelectorAll('.image-item');
+const modal = document.getElementById('modal');
+const modalImage = document.getElementById('modal-image');
+const modalCaption = document.getElementById('modal-caption');
+const closeBtn = document.querySelector('.close');
+const menuIcon = document.querySelector('.menu-icon');
+const mobileNav = document.querySelector('.mobile-nav');
+const contrastButtons = document.querySelectorAll('.contrast-btn');
+const fontSizeSlider = document.getElementById('font-size');
+const lineSpacingSlider = document.getElementById('line-spacing');
+const wordSpacingSlider = document.getElementById('word-spacing');
+const letterSpacingSlider = document.getElementById('letter-spacing');
+const accessMenuButton = document.querySelector('.access-menu-button');
+const accessibilityMenu = document.querySelector('.accessibility-menu');
+const resetButton = document.querySelector('.reset-btn');
+
+menuIcon.addEventListener('click', function() {
+    mobileNav.classList.toggle('active');
+});
+
+imageItems.forEach(item => {
+    item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        const caption = item.querySelector('.image-text').innerText;
+
+        modal.style.display = 'flex';
+        modalImage.src = img.src;
+        modalCaption.innerText = caption;
+    });
+});
+
+closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+
+modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
+const defaultValues = {
+    contrast: '',
+    fontSize: '16', 
+    lineHeight: '20', 
+    wordSpacing: '0',
+    letterSpacing: '0' 
+};
+
+let currentValues = { ...defaultValues };
+
+accessMenuButton.addEventListener('click', function() {
+    accessibilityMenu.classList.toggle('visible');
+});
+
+contrastButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const contrast = button.getAttribute('data-contrast');
+        document.body.setAttribute('data-contrast', contrast);
+        currentValues.contrast = contrast;  
+    });
+});
+
+fontSizeSlider.addEventListener('input', () => {
+    const fontSize = fontSizeSlider.value;
+    document.body.style.fontSize = fontSize + 'px'; 
+    currentValues.fontSize = fontSize; 
+});
+
+lineSpacingSlider.addEventListener('input', () => {
+    const lineHeight = lineSpacingSlider.value;
+    document.body.style.lineHeight = lineHeight + 'px';
+    currentValues.lineHeight = lineHeight; 
+});
+
+wordSpacingSlider.addEventListener('input', () => {
+    const wordSpacing = wordSpacingSlider.value;
+    document.body.style.wordSpacing = wordSpacing + 'px'; 
+    currentValues.wordSpacing = wordSpacing;  
+});
+
+letterSpacingSlider.addEventListener('input', () => {
+    const letterSpacing = letterSpacingSlider.value;
+    document.body.style.letterSpacing = letterSpacing + 'px'; 
+    currentValues.letterSpacing = letterSpacing;  
+});
+
+resetButton.addEventListener('click', () => {
+    document.body.removeAttribute('data-contrast');
+    currentValues.contrast = defaultValues.contrast;
+
+    document.body.style.fontSize = defaultValues.fontSize + 'px';
+    fontSizeSlider.value = defaultValues.fontSize;
+    currentValues.fontSize = defaultValues.fontSize;
+
+    document.body.style.lineHeight = defaultValues.lineHeight + 'px';
+    lineSpacingSlider.value = defaultValues.lineHeight;
+    currentValues.lineHeight = defaultValues.lineHeight;
+
+    document.body.style.wordSpacing = defaultValues.wordSpacing + 'px';
+    wordSpacingSlider.value = defaultValues.wordSpacing;
+    currentValues.wordSpacing = defaultValues.wordSpacing;
+
+    document.body.style.letterSpacing = defaultValues.letterSpacing + 'px';
+    letterSpacingSlider.value = defaultValues.letterSpacing;
+    currentValues.letterSpacing = defaultValues.letterSpacing;
+});

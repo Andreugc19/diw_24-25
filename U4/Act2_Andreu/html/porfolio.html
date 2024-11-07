@@ -29,10 +29,8 @@
         </div>
     </header>
 
-    <!-- Botón para abrir el menú de accesibilidad -->
     <button class="access-menu-button">Acces Menu</button>
 
-    <!-- Menú de accesibilidad (oculto al inicio) -->
     <div class="accessibility-menu">
         <h2>Accessibility Options</h2>
         <button class="contrast-btn" data-contrast="grayscale">Grayscale</button>
@@ -43,19 +41,18 @@
         
         <div class="font-settings">
             <label for="font-size">Font Size:</label>
-            <input type="range" id="font-size" min="1" max="3" step="0.1" value="1">
+            <input type="range" id="font-size" min="16" max="20" step="0.1" value="1">
             
             <label for="line-spacing">Line Spacing:</label>
-            <input type="range" id="line-spacing" min="1" max="3" step="0.1" value="1">
+            <input type="range" id="line-spacing" min="20" max="25" step="0.1" value="1">
             
             <label for="word-spacing">Word Spacing:</label>
-            <input type="range" id="word-spacing" min="1" max="3" step="0.1" value="1">
+            <input type="range" id="word-spacing" min="0" max="3" step="0.1" value="1">
             
             <label for="letter-spacing">Letter Spacing:</label>
-            <input type="range" id="letter-spacing" min="1" max="3" step="0.1" value="1">
+            <input type="range" id="letter-spacing" min="0" max="3" step="0.1" value="1">
         </div>
         
-        <!-- Botón de Restablecer -->
         <button class="reset-btn">Reset</button>
     </div>
 
@@ -314,128 +311,6 @@
         <a href="#"><i class="fab fa-facebook"></i></a>
     </footer>
 
-    <script>
-        const imageItems = document.querySelectorAll('.image-item');
-        const modal = document.getElementById('modal');
-        const modalImage = document.getElementById('modal-image');
-        const modalCaption = document.getElementById('modal-caption');
-        const closeBtn = document.querySelector('.close');
-        const menuIcon = document.querySelector('.menu-icon');
-        const mobileNav = document.querySelector('.mobile-nav');
-        const contrastButtons = document.querySelectorAll('.contrast-btn');
-        const fontSizeSlider = document.getElementById('font-size');
-        const lineSpacingSlider = document.getElementById('line-spacing');
-        const wordSpacingSlider = document.getElementById('word-spacing');
-        const letterSpacingSlider = document.getElementById('letter-spacing');
-        const accessMenuButton = document.querySelector('.access-menu-button');
-        const accessibilityMenu = document.querySelector('.accessibility-menu');
-        const resetButton = document.querySelector('.reset-btn');
-
-        menuIcon.addEventListener('click', function() {
-            mobileNav.classList.toggle('active');
-        });
-
-        imageItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const img = item.querySelector('img');
-                const caption = item.querySelector('.image-text').innerText;
-
-                modal.style.display = 'flex';
-                modalImage.src = img.src;
-                modalCaption.innerText = caption;
-            });
-        });
-
-        closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-
-        modal.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
-
-        // Valores predeterminados en px (para evitar el uso de em)
-        const defaultValues = {
-            contrast: '',
-            fontSize: '16', // px
-            lineHeight: '20', // px
-            wordSpacing: '0', // px
-            letterSpacing: '0' // px
-        };
-
-        // Estado actual de los controles
-        let currentValues = { ...defaultValues };
-
-        // Mostrar el menú de accesibilidad al hacer click en el botón
-        accessMenuButton.addEventListener('click', function() {
-            accessibilityMenu.classList.toggle('visible');
-        });
-
-        // Cambiar el contraste según el botón clickeado
-        contrastButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const contrast = button.getAttribute('data-contrast');
-                document.body.setAttribute('data-contrast', contrast);
-                currentValues.contrast = contrast;  // Guardar valor de contraste actual
-            });
-        });
-
-        // Cambiar el tamaño de la fuente
-        fontSizeSlider.addEventListener('input', () => {
-            const fontSize = fontSizeSlider.value;
-            document.body.style.fontSize = fontSize + 'px'; // Usar px
-            currentValues.fontSize = fontSize;  // Guardar tamaño de fuente
-        });
-
-        // Cambiar el espaciado entre líneas
-        lineSpacingSlider.addEventListener('input', () => {
-            const lineHeight = lineSpacingSlider.value;
-            document.body.style.lineHeight = lineHeight + 'px'; // Usar px
-            currentValues.lineHeight = lineHeight;  // Guardar espaciado de líneas
-        });
-
-        // Cambiar el espaciado entre palabras
-        wordSpacingSlider.addEventListener('input', () => {
-            const wordSpacing = wordSpacingSlider.value;
-            document.body.style.wordSpacing = wordSpacing + 'px'; // Usar px
-            currentValues.wordSpacing = wordSpacing;  // Guardar espaciado de palabras
-        });
-
-        // Cambiar el espaciado entre letras
-        letterSpacingSlider.addEventListener('input', () => {
-            const letterSpacing = letterSpacingSlider.value;
-            document.body.style.letterSpacing = letterSpacing + 'px'; // Usar px
-            currentValues.letterSpacing = letterSpacing;  // Guardar espaciado de letras
-        });
-
-        // Botón de restablecer todo
-        resetButton.addEventListener('click', () => {
-            // Restablecer el contraste
-            document.body.removeAttribute('data-contrast');
-            currentValues.contrast = defaultValues.contrast;
-
-            // Restablecer el tamaño de fuente
-            document.body.style.fontSize = defaultValues.fontSize + 'px';
-            fontSizeSlider.value = defaultValues.fontSize;
-            currentValues.fontSize = defaultValues.fontSize;
-
-            // Restablecer espaciado entre líneas
-            document.body.style.lineHeight = defaultValues.lineHeight + 'px';
-            lineSpacingSlider.value = defaultValues.lineHeight;
-            currentValues.lineHeight = defaultValues.lineHeight;
-
-            // Restablecer espaciado entre palabras
-            document.body.style.wordSpacing = defaultValues.wordSpacing + 'px';
-            wordSpacingSlider.value = defaultValues.wordSpacing;
-            currentValues.wordSpacing = defaultValues.wordSpacing;
-
-            // Restablecer espaciado entre letras
-            document.body.style.letterSpacing = defaultValues.letterSpacing + 'px';
-            letterSpacingSlider.value = defaultValues.letterSpacing;
-            currentValues.letterSpacing = defaultValues.letterSpacing;
-        });
-    </script>
+    <script src="../js/porfolio.js"></script>
 </body>
 </html>

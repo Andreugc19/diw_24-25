@@ -39,6 +39,33 @@
         </div>
     </nav>
 
+    <button class="access-menu-button">Acces Menu</button>
+
+    <div class="accessibility-menu">
+        <h2>Accessibility Options</h2>
+        <button class="contrast-btn" data-contrast="grayscale">Grayscale</button>
+        <button class="contrast-btn" data-contrast="dark">Dark Contrast</button>
+        <button class="contrast-btn" data-contrast="light">Light Contrast</button>
+        <button class="contrast-btn" data-contrast="high-saturation">High Saturation</button>
+        <button class="contrast-btn" data-contrast="low-saturation">Low Saturation</button>
+        
+        <div class="font-settings">
+            <label for="font-size">Font Size:</label>
+            <input type="range" id="font-size" min="16" max="20" step="0.1" value="1">
+            
+            <label for="line-spacing">Line Spacing:</label>
+            <input type="range" id="line-spacing" min="20" max="25" step="0.1" value="1">
+            
+            <label for="word-spacing">Word Spacing:</label>
+            <input type="range" id="word-spacing" min="0" max="3" step="0.1" value="1">
+            
+            <label for="letter-spacing">Letter Spacing:</label>
+            <input type="range" id="letter-spacing" min="0" max="3" step="0.1" value="1">
+        </div>
+
+        <button class="reset-btn">Reset</button>
+    </div>
+
     <main>
         <section class="images-gallery">
             <div class="gallery">
@@ -56,13 +83,6 @@
         <a href="#"><i class="fab fa-facebook"></i></a>
     </footer>
 
-    <script>
-        const menuIcon = document.querySelector('.menu-icon');
-        const mobileNav = document.querySelector('.mobile-nav');
-
-        menuIcon.addEventListener('click', function() {
-            mobileNav.classList.toggle('active');
-        });
-    </script>
+    <script src="../js/al-voltant-balena.js"></script>
 </body>
 </html>

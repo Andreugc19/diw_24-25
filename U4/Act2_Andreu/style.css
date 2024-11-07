@@ -224,6 +224,7 @@ button:hover {
 
 .content h1 {
   margin-bottom: 10px;
+  font-size: 24px;
 }
 
 /* Animación de desvanecimiento */
@@ -283,6 +284,7 @@ footer a {
   }
   .content h1 {
     margin-bottom: 15px;
+    font-size: 24px;
   }
   footer {
     position: relative;
