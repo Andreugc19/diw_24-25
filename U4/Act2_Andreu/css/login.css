@@ -1,0 +1,174 @@
+/* Estilos Generales */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../Images/bg-login.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Contenedor Principal */
+.container {
+    display: flex; 
+    width: 100%;
+    height: 100%;
+}
+
+/* Contenedor de la Imagen de Fondo */
+.image-background {
+    flex: 1;
+}
+
+/* Contenedor del Formulario */
+.form-container {
+    flex: 2;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 30px; 
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+}
+
+/* Ícono de Retroceso */ 
+.back-button {
+    position: absolute; 
+    top: 20px; 
+    left: 20px;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+/* Efecto Hover en Botón de Retroceso */
+.back-button:hover {
+    text-decoration: underline;
+}
+
+/* Ícono de Usuario */
+.profile-icon {
+    font-size: 80px; 
+    color: grey; 
+    margin-bottom: 20px;
+}
+
+/* Contenedor de los Inputs */
+.input-container {
+    position: relative;
+    margin: 15px 0; 
+}
+
+/* Inputs de Email y Contraseña */
+input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px 30px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px; 
+    box-sizing: border-box;
+}
+
+/* Estilo del Ícono en Inputs */
+.input-container i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px; 
+}
+
+/* Estilo de Olvidé mi Contraseña */
+.forgot-password {
+    display: block;
+    margin-top: 15px;
+    text-decoration: none;
+    font-size: 16px; 
+}
+
+/* Efecto Hover en Olvidé mi Contraseña */
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Estilo del Botón */
+button {
+    width: 100%;
+    padding: 10px; 
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px; 
+    font-size: 16px; 
+}
+
+/* Media Query para dispositivos móviles */
+@media (max-width: 767px) {
+    .container {
+        flex-direction: column; 
+        height: auto; 
+    }
+
+    .image-background {
+        display: none; 
+    }
+
+    .form-container {
+        width: 100%; 
+        border-radius: 0; 
+        box-shadow: none; 
+        padding: 20px; 
+        margin-top: 0; 
+        margin-bottom: 20px; 
+        z-index: 1; 
+    }
+
+    .profile-icon {
+        font-size: 80px; 
+    }
+
+    input[type="email"],
+    input[type="password"] {
+        font-size: 16px; 
+    }
+
+    button {
+        font-size: 16px; 
+    }
+}
+
+/* Media Query para dispositivos de escritorio (768px) */
+@media (min-width: 768px) {
+    body {
+        height: 100vh; 
+    }
+
+    .container {
+        flex-direction: row;
+    }
+
+    .form-container {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center; 
+        padding: 50px; 
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); 
+    }
+
+    .profile-icon {
+        font-size: 100px; 
+        margin-bottom: 30px; 
+    }
+
+    input[type="email"],
+    input[type="password"] {
+        font-size: 18px;
+    }
+
+    button {
+        font-size: 18px; 
+    }
+}

@@ -1,0 +1,74 @@
+@charset "UTF-8";
+/* Body and overall layout */
+body {
+  background-color: #B5E1D9;
+  color: #000;
+}
+
+/* Header */
+header {
+  background: linear-gradient(135deg, #395C6b, #64A0BA);
+  color: #fff;
+}
+
+nav.desktop-nav a {
+  color: #fff;
+}
+
+/* Botón de login dentro del menú */
+button {
+  background: #64A0BA;
+  color: #fff;
+}
+
+button:hover {
+  background: #5a8ba0;
+}
+
+.back-button {
+  color: #64A0BA;
+}
+
+/* Menú de navegación para móviles */
+.mobile-nav {
+  background: linear-gradient(135deg, #395C6b, #64A0BA);
+}
+
+.mobile-nav a {
+  color: #fff;
+}
+
+.content {
+  background: #fff;
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#modal-caption {
+  color: #fff;
+}
+
+.close {
+  color: #fff;
+}
+
+.input-container i {
+  color: #000;
+}
+
+.forgot-password {
+  color: #000;
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(135deg, #395C6b, #64A0BA);
+  color: #fff;
+}
+
+/* Iconos en el footer */
+footer a {
+  color: #fff;
+}/*# sourceMappingURL=style.css.map */

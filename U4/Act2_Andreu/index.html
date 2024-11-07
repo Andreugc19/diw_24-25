@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../Act2_Andreu/scss/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Home Page</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="../Act2_Andreu/index.html"><img src="../Act2_Andreu/Images/Logo.png" alt="Company logo of a blue whale"></a>
+        </div>
+
+        <nav class="desktop-nav">
+            <div class="nav-links">
+                <a href="#">Historia</a>
+                <a href="../Act2_Andreu/html/porfolio.html">Portfolio</a>
+                <a href="#">Publicacions</a>
+                <a href="../Act2_Andreu/html/al-voltant-balena.html">Al Voltant de la Balena</a>
+            </div>
+            <a href="../Act2_Andreu/html/login.html"><button>Login</button></a>
+        </nav>
+
+        <div class="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <!-- Botón para abrir el menú de accesibilidad -->
+    <button class="access-menu-button">Acces Menu</button>
+
+    <!-- Menú de accesibilidad (oculto al inicio) -->
+    <div class="accessibility-menu">
+        <h2>Accessibility Options</h2>
+        <button class="contrast-btn" data-contrast="grayscale">Grayscale</button>
+        <button class="contrast-btn" data-contrast="dark">Dark Contrast</button>
+        <button class="contrast-btn" data-contrast="light">Light Contrast</button>
+        <button class="contrast-btn" data-contrast="high-saturation">High Saturation</button>
+        <button class="contrast-btn" data-contrast="low-saturation">Low Saturation</button>
+        
+        <div class="font-settings">
+            <label for="font-size">Font Size:</label>
+            <input type="range" id="font-size" min="1" max="3" step="0.1" value="1">
+            
+            <label for="line-spacing">Line Spacing:</label>
+            <input type="range" id="line-spacing" min="1" max="3" step="0.1" value="1">
+            
+            <label for="word-spacing">Word Spacing:</label>
+            <input type="range" id="word-spacing" min="1" max="3" step="0.1" value="1">
+            
+            <label for="letter-spacing">Letter Spacing:</label>
+            <input type="range" id="letter-spacing" min="1" max="3" step="0.1" value="1">
+        </div>
+        
+        <!-- Botón de Restablecer -->
+        <button class="reset-btn">Reset</button>
+    </div>
+
+    <main>
+        <section class="container">
+            <iframe title="Blue whale skeleton 3D model - Sketchfab" class="c-viewer__iframe" src="https://sketchfab.com/models/8502dbef80ed4aa688c13c90cb14de73/embed?autostart=1&amp;internal=1&amp;tracking=0&amp;ui_ar=0&amp;ui_infos=0&amp;ui_snapshots=1&amp;ui_stop=0&amp;ui_theatre=1&amp;ui_watermark=0" id="api-frame" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking="true" execution-while-out-of-viewport="true" execution-while-not-rendered="true" web-share="true" allowfullscreen=""></iframe>
+            <article class="content">
+                <h1>BALENA BLAVA</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non magnam voluptatem similique tempora quos earum rem distinctio obcaecati accusamus, id, quasi dicta nam. Praesentium laudantium dignissimos enim totam accusamus cum.
+                </p>
+            </article>
+        </section>
+    </main>
+    
+    <footer>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+    </footer>
+
+    <script>
+        const menuIcon = document.querySelector('.menu-icon');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const contrastButtons = document.querySelectorAll('.contrast-btn');
+        const fontSizeSlider = document.getElementById('font-size');
+        const lineSpacingSlider = document.getElementById('line-spacing');
+        const wordSpacingSlider = document.getElementById('word-spacing');
+        const letterSpacingSlider = document.getElementById('letter-spacing');
+        const accessMenuButton = document.querySelector('.access-menu-button');
+        const accessibilityMenu = document.querySelector('.accessibility-menu');
+        const resetButton = document.querySelector('.reset-btn');
+
+        // Valores predeterminados en px (para evitar el uso de em)
+        const defaultValues = {
+            contrast: '',
+            fontSize: '16', // px
+            lineHeight: '20', // px
+            wordSpacing: '0', // px
+            letterSpacing: '0' // px
+        };
+
+        // Estado actual de los controles
+        let currentValues = { ...defaultValues };
+
+        // Mostrar el menú de accesibilidad al hacer click en el botón
+        accessMenuButton.addEventListener('click', function() {
+            accessibilityMenu.classList.toggle('visible');
+        });
+
+        // Cambiar el contraste según el botón clickeado
+        contrastButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const contrast = button.getAttribute('data-contrast');
+                document.body.setAttribute('data-contrast', contrast);
+                currentValues.contrast = contrast;  // Guardar valor de contraste actual
+            });
+        });
+
+        // Cambiar el tamaño de la fuente
+        fontSizeSlider.addEventListener('input', () => {
+            const fontSize = fontSizeSlider.value;
+            document.body.style.fontSize = fontSize + 'px'; // Usar px
+            currentValues.fontSize = fontSize;  // Guardar tamaño de fuente
+        });
+
+        // Cambiar el espaciado entre líneas
+        lineSpacingSlider.addEventListener('input', () => {
+            const lineHeight = lineSpacingSlider.value;
+            document.body.style.lineHeight = lineHeight + 'px'; // Usar px
+            currentValues.lineHeight = lineHeight;  // Guardar espaciado de líneas
+        });
+
+        // Cambiar el espaciado entre palabras
+        wordSpacingSlider.addEventListener('input', () => {
+            const wordSpacing = wordSpacingSlider.value;
+            document.body.style.wordSpacing = wordSpacing + 'px'; // Usar px
+            currentValues.wordSpacing = wordSpacing;  // Guardar espaciado de palabras
+        });
+
+        // Cambiar el espaciado entre letras
+        letterSpacingSlider.addEventListener('input', () => {
+            const letterSpacing = letterSpacingSlider.value;
+            document.body.style.letterSpacing = letterSpacing + 'px'; // Usar px
+            currentValues.letterSpacing = letterSpacing;  // Guardar espaciado de letras
+        });
+
+        // Botón de restablecer todo
+        resetButton.addEventListener('click', () => {
+            // Restablecer el contraste
+            document.body.removeAttribute('data-contrast');
+            currentValues.contrast = defaultValues.contrast;
+
+            // Restablecer el tamaño de fuente
+            document.body.style.fontSize = defaultValues.fontSize + 'px';
+            fontSizeSlider.value = defaultValues.fontSize;
+            currentValues.fontSize = defaultValues.fontSize;
+
+            // Restablecer espaciado entre líneas
+            document.body.style.lineHeight = defaultValues.lineHeight + 'px';
+            lineSpacingSlider.value = defaultValues.lineHeight;
+            currentValues.lineHeight = defaultValues.lineHeight;
+
+            // Restablecer espaciado entre palabras
+            document.body.style.wordSpacing = defaultValues.wordSpacing + 'px';
+            wordSpacingSlider.value = defaultValues.wordSpacing;
+            currentValues.wordSpacing = defaultValues.wordSpacing;
+
+            // Restablecer espaciado entre letras
+            document.body.style.letterSpacing = defaultValues.letterSpacing + 'px';
+            letterSpacingSlider.value = defaultValues.letterSpacing;
+            currentValues.letterSpacing = defaultValues.letterSpacing;
+        });
+    </script>
+</body>
+</html>

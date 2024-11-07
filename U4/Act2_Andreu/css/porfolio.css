@@ -1,0 +1,377 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Body and overall layout */
+body {
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; 
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    font-size: 1rem;
+    word-spacing: 0.1em;
+    letter-spacing: normal;
+}
+
+/* Botón de menú de accesibilidad */
+.access-menu-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 1rem;
+  }
+  
+  /* Menú de accesibilidad */
+  .accessibility-menu {
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    width: 250px;
+    padding: 15px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+    transform: translateY(20px);
+    z-index: 1000;
+  
+    h2 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+  
+    button,
+    label {
+      display: block;
+      margin: 8px 0;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  
+    .reset-btn {
+      background-color: #d9534f;
+      color: white;
+      border: none;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  
+    .reset-btn:hover {
+      background-color: #c9302c;
+    }
+  }
+  
+  /* Mostrar menú cuando está visible */
+  .accessibility-menu.visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  body[data-contrast="grayscale"] {
+    filter: grayscale(100%);
+  }
+  body[data-contrast="dark"] {
+    background: #333;
+    color: #eee;
+  }
+  body[data-contrast="light"] {
+    background: #fff;
+    color: #000;
+  }
+  body[data-contrast="high-saturation"] {
+    filter: saturate(200%);
+  }
+  body[data-contrast="low-saturation"] {
+    filter: saturate(50%);
+  }
+
+/* Header */
+header {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 60px;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra del header */
+}
+
+/* Logo a la izquierda */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    max-width: 60px;
+    transition: transform 0.3s; /* Transición para el logo */
+}
+
+.logo img:hover {
+    transform: scale(1.1); /* Efecto de aumento al pasar el mouse */
+}
+
+/* Menú de navegación para escritorio */
+nav.desktop-nav {
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+}
+
+/* Enlaces en el menú de navegación */
+nav.desktop-nav .nav-links {
+    display: flex; 
+}
+
+nav.desktop-nav a {
+    margin: 0 20px; 
+    font-size: 18px;
+    text-decoration: none; 
+    transition: color 0.3s; /* Transición suave para el color */
+}
+
+nav.desktop-nav a:hover {
+    text-decoration: underline; 
+}
+
+/* Icono del menú para móvil */
+.menu-icon {
+    display: none; 
+    font-size: 24px; 
+    cursor: pointer;
+    transition: transform 0.3s; /* Transición para el icono del menú */
+}
+
+.menu-icon:hover {
+    transform: rotate(90deg); /* Rotación al pasar el mouse */
+}
+
+/* Botón de login dentro del menú */
+button {
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease; /* Transición para el botón */
+}
+
+button:hover {
+    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+}
+
+/* Menú de navegación para móviles */
+.mobile-nav {
+    display: none; 
+    position: absolute;
+    top: 60px; 
+    left: 0;
+    right: 0;
+    z-index: 999; 
+}
+
+/* Mostrar el menú cuando está activo */
+.mobile-nav.active {
+    display: block; 
+}
+
+.mobile-nav .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.mobile-nav a {
+    margin: 10px 0; 
+    font-size: 18px;
+    text-decoration: none; 
+}
+
+/* Grid de imágenes */
+.image-grid {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Imagenes más grandes y adaptativas */
+.image-item {
+    position: relative;
+    text-align: center; /* Centra el texto debajo de la imagen */
+    overflow: hidden; /* Asegura que no se salga el contenido */
+    transition: transform 0.3s; /* Transición para las imágenes */
+}
+
+.image-item:hover {
+    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Sombra en hover */
+}
+
+.image-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 500px; /* Limitar la altura máxima */
+    object-fit: cover; /* Asegura que la imagen mantenga su proporción sin distorsionarse */
+}
+
+/* Texto sobre las imágenes */
+.image-text {
+    display: none; /* Esconder el texto por defecto */
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Mostrar texto en el modal */
+.modal-content {
+    max-width: 90%;
+    max-height: 70%; /* Ajustamos la altura para que se vea mejor */
+    margin: auto;
+    display: block;
+    transition: transform 0.3s; /* Transición para el contenido del modal */
+}
+
+/* Estilo para mostrar texto en el modal */
+#modal-caption {
+    margin-top: 10px; /* Espacio entre la imagen y el texto */
+    text-align: center;
+    font-size: 18px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 40px;
+    cursor: pointer;
+    transition: transform 0.3s; /* Transición para el botón de cerrar */
+}
+
+.close:hover {
+    transform: scale(1.2); /* Efecto de aumento al pasar el mouse */
+}
+
+/* Footer */
+footer {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    padding: 10px 20px;
+}
+
+/* Estilo para los enlaces en el pie de página */
+footer a {
+    margin-left: 20px;
+    font-size: 24px;
+    text-decoration: none;
+    transition: color 0.3s; /* Transición para los enlaces */
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+    /* Dos imágenes por fila */
+    .image-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Aumentar tamaño de las imágenes */
+    .image-item img {
+        max-height: 600px;
+    }
+}
+
+@media (min-width: 768px) {
+    /* Header */
+    header {
+        padding: 10px 20px; 
+    }
+
+    /* Logo más grande en escritorio */
+    .logo img {
+        max-width: 85px; 
+    }
+    
+    /* Mostrar icono de menú en escritorio */
+    .menu-icon {
+        display: none; 
+    }
+
+    footer {
+        position: relative;
+    }
+
+    footer a {
+        margin: 0 20px;
+        font-size: 35px;
+    }
+}
+
+@media (min-width: 992px) {
+    /* Tres imágenes por fila */
+    .image-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Aumentar tamaño de las imágenes */
+    .image-item img {
+        max-height: 700px;
+    }
+}
+
+@media (min-width: 1200px) {
+    /* Cuatro imágenes por fila */
+    .image-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Aumentar tamaño de las imágenes */
+    .image-item img {
+        max-height: 800px;
+    }
+}
+
+/* Media Queries - Versión móvil */
+@media (max-width: 767px) {
+    /* Mostrar icono de menú en móvil */
+    .menu-icon {
+        display: block;
+    }
+
+    /* Esconder menú de navegación en móvil */
+    nav.desktop-nav {
+        display: none;
+    }
+}
+
+/* Mostrar texto al hacer clic */
+.image-item.active .image-text {
+    display: flex;
+}
