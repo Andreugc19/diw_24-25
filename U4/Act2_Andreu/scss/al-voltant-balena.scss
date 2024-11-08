@@ -190,6 +190,13 @@ body {
     }
   }
 
+    // Agregar visibilidad al menú de accesibilidad cuando tenga la clase 'visible'
+    .accessibility-menu.visible {
+      display: block;
+      opacity: 1;
+      transform: translateY(0); /* Desplazamiento desde abajo */
+    }
+
   .images-gallery {
     padding: 20px;
     text-align: center;
@@ -236,6 +243,29 @@ body {
       text-decoration: none;
       transition: color 0.3s;
     }
+  }
+
+  // Estilos para contraste y saturación
+  body[data-contrast="grayscale"] {
+    filter: grayscale(100%);
+  }
+
+  body[data-contrast="dark"] {
+    background: #333;
+    color: #eee;
+  }
+
+  body[data-contrast="light"] {
+    background: #fff;
+    color: #000;
+  }
+
+  body[data-contrast="high-saturation"] {
+    filter: saturate(200%);
+  }
+
+  body[data-contrast="low-saturation"] {
+    filter: saturate(50%);
   }
 }
 

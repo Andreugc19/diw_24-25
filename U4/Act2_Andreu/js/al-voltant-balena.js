@@ -33,25 +33,25 @@ contrastButtons.forEach(button => {
 
 fontSizeSlider.addEventListener('input', () => {
     const fontSize = fontSizeSlider.value;
-    document.body.style.fontSize = fontSize + 'px'; 
+    document.body.style.fontSize = fontSize + 'rem'; 
     currentValues.fontSize = fontSize; 
 });
 
 lineSpacingSlider.addEventListener('input', () => {
     const lineHeight = lineSpacingSlider.value;
-    document.body.style.lineHeight = lineHeight + 'px'; 
+    document.body.style.lineHeight = lineHeight + 'rem'; 
     currentValues.lineHeight = lineHeight; 
 });
 
 wordSpacingSlider.addEventListener('input', () => {
     const wordSpacing = wordSpacingSlider.value;
-    document.body.style.wordSpacing = wordSpacing + 'px'; 
+    document.body.style.wordSpacing = wordSpacing + 'rem'; 
     currentValues.wordSpacing = wordSpacing;  
 });
 
 letterSpacingSlider.addEventListener('input', () => {
     const letterSpacing = letterSpacingSlider.value;
-    document.body.style.letterSpacing = letterSpacing + 'px'; 
+    document.body.style.letterSpacing = letterSpacing + 'rem'; 
     currentValues.letterSpacing = letterSpacing;  
 });
 
@@ -59,19 +59,19 @@ resetButton.addEventListener('click', () => {
     document.body.removeAttribute('data-contrast');
     currentValues.contrast = defaultValues.contrast;
 
-    document.body.style.fontSize = defaultValues.fontSize + 'px';
+    document.body.style.fontSize = defaultValues.fontSize + 'rem';
     fontSizeSlider.value = defaultValues.fontSize;
     currentValues.fontSize = defaultValues.fontSize;
 
-    document.body.style.lineHeight = defaultValues.lineHeight + 'px';
+    document.body.style.lineHeight = defaultValues.lineHeight + 'rem';
     lineSpacingSlider.value = defaultValues.lineHeight;
     currentValues.lineHeight = defaultValues.lineHeight;
 
-    document.body.style.wordSpacing = defaultValues.wordSpacing + 'px';
+    document.body.style.wordSpacing = defaultValues.wordSpacing + 'rem';
     wordSpacingSlider.value = defaultValues.wordSpacing;
     currentValues.wordSpacing = defaultValues.wordSpacing;
 
-    document.body.style.letterSpacing = defaultValues.letterSpacing + 'px';
+    document.body.style.letterSpacing = defaultValues.letterSpacing + 'rem';
     letterSpacingSlider.value = defaultValues.letterSpacing;
     currentValues.letterSpacing = defaultValues.letterSpacing;
 });

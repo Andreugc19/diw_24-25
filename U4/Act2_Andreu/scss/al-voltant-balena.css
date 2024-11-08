@@ -152,6 +152,11 @@ body .accessibility-menu .reset-btn {
 body .accessibility-menu .reset-btn:hover {
   background-color: #c9302c;
 }
+body .accessibility-menu.visible {
+  display: block;
+  opacity: 1;
+  transform: translateY(0); /* Desplazamiento desde abajo */
+}
 body .images-gallery {
   padding: 20px;
   text-align: center;
@@ -192,6 +197,23 @@ body footer a {
   font-size: 24px;
   text-decoration: none;
   transition: color 0.3s;
+}
+body body[data-contrast=grayscale] {
+  filter: grayscale(100%);
+}
+body body[data-contrast=dark] {
+  background: #333;
+  color: #eee;
+}
+body body[data-contrast=light] {
+  background: #fff;
+  color: #000;
+}
+body body[data-contrast=high-saturation] {
+  filter: saturate(200%);
+}
+body body[data-contrast=low-saturation] {
+  filter: saturate(50%);
 }
 
 @media (min-width: 768px) {

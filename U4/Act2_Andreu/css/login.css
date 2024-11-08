@@ -93,6 +93,11 @@ input[type="email"], input[type="password"] {
     text-decoration: underline;
 }
 
+#error-message {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
 /* Estilo del Botón */
 button {
     width: 100%;
