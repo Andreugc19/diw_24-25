@@ -11,11 +11,15 @@ const resetButton = document.querySelector('.reset-btn');
 
 const defaultValues = {
     contrast: '',
-    fontSize: '16',
-    lineHeight: '20',
-    wordSpacing: '0',
+    fontSize: '1', 
+    lineHeight: '1.73', 
+    wordSapcing: '0.1',
     letterSpacing: '0'
 };
+
+menuIcon.addEventListener('click', function() {
+    mobileNav.classList.toggle('active');
+});
 
 let currentValues = { ...defaultValues };
 
@@ -27,7 +31,7 @@ contrastButtons.forEach(button => {
     button.addEventListener('click', () => {
         const contrast = button.getAttribute('data-contrast');
         document.body.setAttribute('data-contrast', contrast);
-        currentValues.contrast = contrast;
+        currentValues.contrast = contrast;  
     });
 });
 
@@ -39,7 +43,7 @@ fontSizeSlider.addEventListener('input', () => {
 
 lineSpacingSlider.addEventListener('input', () => {
     const lineHeight = lineSpacingSlider.value;
-    document.body.style.lineHeight = lineHeight + 'rem'; 
+    document.body.style.lineHeight = lineHeight + 'rem';
     currentValues.lineHeight = lineHeight; 
 });
 

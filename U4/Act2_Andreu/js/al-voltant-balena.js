@@ -11,11 +11,16 @@ const resetButton = document.querySelector('.reset-btn');
 
 const defaultValues = {
     contrast: '',
-    fontSize: '16',
-    lineHeight: '20',
-    wordSpacing: '0',
+    fontSize: '1',
+    lineHeight: '1.73',
+    wordSpacing: '0.1',
     letterSpacing: '0'
 };
+
+menuIcon.addEventListener('click', function() {
+    mobileNav.classList.toggle('active');
+});
+
 
 let currentValues = { ...defaultValues };
 

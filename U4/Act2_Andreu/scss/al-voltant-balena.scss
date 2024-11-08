@@ -103,33 +103,46 @@ body {
         transform: rotate(90deg);
       }
     }
-  }
 
-  .mobile-nav {
-    display: none; 
-    position: absolute;
-    top: 60px; 
-    left: 0;
-    right: 0;
-    z-index: 999; 
-    background: $primary;
-
-    &.active {
-      display: block;
-    }
-
-    .nav-links {
-        display: flex;
-        flex-direction: column;
-        align-items: center; 
-
-      a {
-        color: $text-invers;
-        margin: 10px 0; 
-        font-size: 18px;
-        text-decoration: none; 
+    .mobile-nav {
+      display: none; 
+      position: absolute;
+      top: 60px; 
+      left: 0;
+      right: 0;
+      z-index: 999; 
+      background: $primary;
+  
+      &.active {
+        display: block;
+      }
+  
+      .nav-links {
+          display: flex;
+          flex-direction: column;
+          align-items: center; 
+  
+        a {
+          color: $text-invers;
+          margin: 10px 0; 
+          font-size: 18px;
+          text-decoration: none; 
+        }
       }
     }
+  }
+
+  button {
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease; /* Transición para el botón */
+  }
+
+  button:hover {
+    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
   }
 
   .access-menu-button {
@@ -190,7 +203,6 @@ body {
     }
   }
 
-    // Agregar visibilidad al menú de accesibilidad cuando tenga la clase 'visible'
     .accessibility-menu.visible {
       display: block;
       opacity: 1;
@@ -243,29 +255,6 @@ body {
       text-decoration: none;
       transition: color 0.3s;
     }
-  }
-
-  // Estilos para contraste y saturación
-  body[data-contrast="grayscale"] {
-    filter: grayscale(100%);
-  }
-
-  body[data-contrast="dark"] {
-    background: #333;
-    color: #eee;
-  }
-
-  body[data-contrast="light"] {
-    background: #fff;
-    color: #000;
-  }
-
-  body[data-contrast="high-saturation"] {
-    filter: saturate(200%);
-  }
-
-  body[data-contrast="low-saturation"] {
-    filter: saturate(50%);
   }
 }
 
