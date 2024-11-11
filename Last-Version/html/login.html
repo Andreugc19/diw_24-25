@@ -16,19 +16,23 @@
             <div class="profile-icon">
                 <i class="fas fa-user"></i>
             </div>
-            <form>
+            <form id="login-form" onsubmit="return validateForm(event)">
                 <div class="input-container">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" placeholder="Email" required>
+                    <input type="email" id="email" placeholder="Email" required>
                 </div>
                 <div class="input-container">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" required>
+                    <input type="password" id="password" placeholder="Password" required>
                 </div>
                 <a href="#" class="forgot-password">Forgot Password?</a>
                 <button type="submit">Login</button>
+                <p id="error-message" style="color: red; display: none;">Email o contraseña incorrectos.</p>
             </form>
         </div>
     </div>
+
+    <script src="../js/login.js"></script>
 </body>
 </html>
+

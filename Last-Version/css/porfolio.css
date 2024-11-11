@@ -11,7 +11,95 @@ body {
     min-height: 100vh; 
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    font-size: 1rem;
+    word-spacing: 0.1em;
+    letter-spacing: normal;
 }
+
+/* Botón de menú de accesibilidad */
+.access-menu-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 1rem;
+  }
+  
+  /* Menú de accesibilidad */
+  .accessibility-menu {
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    width: 250px;
+    padding: 15px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+    transform: translateY(20px);
+    z-index: 1000;
+  
+    h2 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+  
+    button,
+    label {
+      display: block;
+      margin: 8px 0;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  
+    .reset-btn {
+      background-color: #d9534f;
+      color: white;
+      border: none;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  
+    .reset-btn:hover {
+      background-color: #c9302c;
+    }
+  }
+  
+  /* Mostrar menú cuando está visible */
+  .accessibility-menu.visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  body[data-contrast="grayscale"] {
+    filter: grayscale(100%);
+  }
+  body[data-contrast="dark"] {
+    background: #333;
+    color: #eee;
+  }
+  body[data-contrast="light"] {
+    background: #fff;
+    color: #000;
+  }
+  body[data-contrast="high-saturation"] {
+    filter: saturate(200%);
+  }
+  body[data-contrast="low-saturation"] {
+    filter: saturate(50%);
+  }
 
 /* Header */
 header {
