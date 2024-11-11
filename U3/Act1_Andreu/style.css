@@ -16,6 +16,19 @@ body {
   letter-spacing: normal;
 }
 
+button {
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease; /* Transición para el botón */
+}
+
+button:hover {
+  transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+}
+
 /* Botón de menú de accesibilidad */
 .access-menu-button {
   position: fixed;
