@@ -159,9 +159,9 @@ body footer a {
 }
 @media (max-width: 767px) {
   .menu-icon {
-    display: block;
+    display: block !important;
   }
   nav.desktop-nav {
-    display: none;
+    display: none !important;
   }
 }/*# sourceMappingURL=al-voltant-balena.css.map */
