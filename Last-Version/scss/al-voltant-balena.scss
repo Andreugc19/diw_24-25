@@ -19,7 +19,6 @@ $text-invers: #fff;
 
 }
 
-// Estilos generales
 * {
   margin: 0;
   padding: 0;
@@ -46,7 +45,7 @@ body {
     align-items: center;
     min-height: 60px;
     z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra del header */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 
     .logo {
         display: flex;
@@ -138,11 +137,11 @@ body {
     padding: 10px 20px;
     cursor: pointer;
     font-size: 16px;
-    transition: background 0.3s ease; /* Transición para el botón */
+    transition: background 0.3s ease;
   }
 
   button:hover {
-    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+    transform: scale(1.05);
   }
 
   .access-menu-button {
@@ -206,7 +205,7 @@ body {
     .accessibility-menu.visible {
       display: block;
       opacity: 1;
-      transform: translateY(0); /* Desplazamiento desde abajo */
+      transform: translateY(0);
     }
 
   .images-gallery {
@@ -223,10 +222,10 @@ body {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 20px; // Espacio entre imágenes
+      gap: 20px; 
   
       img {
-        max-width: 350px; // Cambiar el tamaño máximo para imágenes más grandes
+        max-width: 350px; 
         height: 550px;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

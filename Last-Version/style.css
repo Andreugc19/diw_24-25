@@ -118,7 +118,6 @@ header {
   z-index: 1000;
 }
 
-/* Logo a la izquierda */
 .logo {
   display: flex;
   align-items: center;
@@ -128,14 +127,12 @@ header {
   max-width: 60px;
 }
 
-/* Menú de navegación para escritorio */
 nav.desktop-nav {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-/* Enlaces en el menú de navegación */
 nav.desktop-nav .nav-links {
   display: flex;
 }
@@ -150,25 +147,23 @@ nav.desktop-nav a:hover {
   text-decoration: underline;
 }
 
-/* Icono del menú para móvil */
 .menu-icon {
   display: none;
   font-size: 24px;
   cursor: pointer;
 }
 
-/* Botón de login dentro del menú */
 button {
   border: none;
   border-radius: 20px;
   padding: 10px 20px;
   cursor: pointer;
   font-size: 16px;
-  transition: background 0.3s ease; /* Transición para el botón */
+  transition: background 0.3s ease; 
 }
 
 button:hover {
-  transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+  transform: scale(1.05);
 }
 
 /* Menú de navegación para móviles */
@@ -249,19 +244,15 @@ footer a {
 
 /* Media Queries - Versión escritorio */
 @media (min-width: 768px) {
-  /* Header */
   header {
     padding: 10px 20px;
   }
-  /* Logo más grande en escritorio */
   .logo img {
     max-width: 85px;
   }
-  /* Mostrar icono de menú en escritorio */
   .menu-icon {
     display: none;
   }
-  /* Layout de contenido: Imagen a la izquierda y texto a la derecha */
   .container {
     max-width: 1800px;
     display: flex;
@@ -293,11 +284,9 @@ footer a {
 }
 /* Media Queries - Versión móvil */
 @media (max-width: 767px) {
-  /* Mostrar icono de menú en móvil */
   .menu-icon {
     display: block;
   }
-  /* Esconder menú de navegación en móvil */
   nav.desktop-nav {
     display: none;
   }
