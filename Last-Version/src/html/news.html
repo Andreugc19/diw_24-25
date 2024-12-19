@@ -4,29 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <link rel="stylesheet" href="../output.css">
     <title>News Page</title>
+    <style>
+        body[data-contrast="grayscale"] {
+            filter: grayscale(100%);
+        }
+        body[data-contrast="dark"] {
+            background: #333;
+            color: #eee;
+        }
+        body[data-contrast="light"] {
+            background: #fff;
+            color: #000;
+        }
+        body[data-contrast="high-saturation"] {
+            filter: saturate(200%);
+        }
+        body[data-contrast="low-saturation"] {
+            filter: saturate(50%);
+        }
+    </style>
 </head>
 <body class="flex flex-col min-h-screen bg-[#B5E1D9] text-black">
     <header class=" flex flex-row items-center justify-between bg-gradient-to-br from-[#395C6b] to-[#64A0BA] text-white p-4 min-h-[60px] shadow-lg z-10">
 
         <nav class="container flex items-center justify-between w-screen h-[80px]">
             <div class="logo flex items-center">
-                <a href="../index.html">
+                <a href="index.html">
                     <img src="../Images/Logo.png" class="max-w-[80px] transition-transform duration-300 hover:scale-110" alt="Principal Logo The Blue Whale">
                 </a>
             </div>
             <div class="hidden md:block flex-grow">
                 <div class="nav-links flex space-x-[80px] justify-end ml-[auto]">
                     <a href="#" class="text-white text-lg hover:underline">Historia</a>
-                    <a href="../html/porfolio.html" class="text-white text-lg hover:underline">Portfolio</a>
-                    <a href="../html/news.html" class="text-white text-lg hover:underline">Publicacions</a>
-                    <a href="../html/al-voltant-balena.html" class="text-white text-lg hover:underline">Al Voltant de la Balena</a>
+                    <a href="porfolio.html" class="text-white text-lg hover:underline">Portfolio</a>
+                    <a href="news.html" class="text-white text-lg hover:underline">Publicacions</a>
+                    <a href="al-voltant-balena.html" class="text-white text-lg hover:underline">Al Voltant de la Balena</a>
+                    <a href="admin.html" class="text-white text-lg hover:underline" id="edit-users-link-desktop" style="display:none;">Edit Users</a>
                 </div>
             </div>
             <div class="hidden md:block ml-[80px]">
-                <a href="../html/login.html">
-                    <button class="flex bg-[#64A0BA] text-white py-2 px-4 rounded-2xl text-lg transition-colors duration-300 hover:bg-[#79a2b4]">Login</button>
+                <a href="login.html">
+                    <button class="flex bg-[#497486] text-white py-2 px-4 rounded-2xl text-lg transition-colors duration-300 hover:bg-[#79a2b4]" id="login-btn-desktop">Login</button>
+                </a>
+                <a href="#">
+                    <button class="flex bg-[#497486] text-white py-2 px-4 rounded-2xl text-lg transition-colors duration-300 hover:bg-[#79a2b4]" id="logout-btn-desktop" style="display:none;">Logout</button>
                 </a>
             </div>
         </nav> 
@@ -34,13 +59,17 @@
         <nav class="mobile-nav absolute top-[60px] left-0 right-0 bg-gradient-to-br from-[#395C6b] to-[#64A0BA] hidden">
             <div class="nav-links flex flex-col items-center space-y-4 py-4">
                 <a href="#" class="text-white text-lg">Historia</a>
-                <a href="../html/porfolio.html" class="text-white text-lg">Portfolio</a>
-                <a href="../html/news.html" class="text-white text-lg">Publicacions</a>
-                <a href="../html/al-voltant-balena.html" class="text-white text-lg">Al Voltant de la Balena</a>
-                <a href="../html/login.html">
-                    <button class="bg-[#64A0BA] text-white py-2 px-4 rounded-2xl text-lg transition-colors duration-300 hover:bg-[#79a2b4]">
+                <a href="porfolio.html" class="text-white text-lg">Portfolio</a>
+                <a href="news.html" class="text-white text-lg">Publicacions</a>
+                <a href="al-voltant-balena.html" class="text-white text-lg">Al Voltant de la Balena</a>
+                <a href="admin.html" class="text-white text-lg hover:underline" id="edit-users-link-mobile" style="display:none;">Edit Users</a>
+                <a href="login.html">
+                    <button class="bg-[#497486] text-white py-2 px-4 rounded-2xl text-lg transition-colors duration-300 hover:bg-[#79a2b4]" id="login-btn-mobile">
                         Login
                     </button>
+                </a>
+                <a href="#">
+                    <button class="flex bg-[#497486] text-white py-2 px-4 rounded-2xl text-lg transition-colors duration-300 hover:bg-[#79a2b4]" id="logout-btn-mobile" style="display:none;">¨Logout</button>
                 </a>
             </div>
         </nav>
@@ -50,11 +79,9 @@
         </div>
     </header>
     
-    <button class="fixed bottom-5 right-5 bg-gray-800 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-gray-700 focus:ring-2 focus:ring-gray-500" id="access-menu-button">
-        Acces Menu
-    </button>
+    <i class="fixed bottom-5 left-5 bg-gray-800 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-gray-700 focus:ring-2 focus:ring-gray-500 fa-solid fa-universal-access" class="access-menu-button"></i>
 
-    <div id="accessibility-menu" class="hidden fixed bottom-20 right-5 w-64 bg-white p-4 rounded-lg shadow-lg space-y-4 z-50">
+    <div id="accessibility-menu" class="hidden fixed bottom-20 left-5 w-64 bg-white p-4 rounded-lg shadow-lg space-y-4 z-50">
         <h2 class="text-lg font-semibold">Accessibility Options</h2>
 
         <div class="space-y-2">
@@ -82,11 +109,11 @@
         <button id="reset-btn" class="w-full bg-red-500 text-white py-2 rounded-md text-sm hover:bg-red-600">Reset</button>
     </div>
 
-    <h1 class="text-4xl font-bold p-4 ml-4">News Page</h1>
+    <h1 class="text-4xl font-bold p-4 ml-4">NOVES ACTUALITATS</h1>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
         <div class="bg-white rounded-md shadow-lg overflow-hidden">
-            <a href="../html/complet-news.html?new=1">
+            <a href="complet-news.html?new=1">
                 <img src="../Images/default-image.png" class="w-full h-[300px] object-cover" alt="News Image">
                 <div class="p-4">
                     <h2 class="text-2xl font-bold mb-2">Noticia 1</h2>
@@ -96,7 +123,7 @@
         </div>
 
         <div class="bg-white rounded-md shadow-lg overflow-hidden">
-            <a href="../html/complet-news.html?new=2">
+            <a href="complet-news.html?new=2">
                 <img src="../Images/default-image.png" class="w-full h-[300px] object-cover" alt="News Image">
                 <div class="p-4">
                     <h2 class="text-2xl font-bold mb-2">Noticia 2</h2>
@@ -106,7 +133,7 @@
         </div>
 
         <div class="bg-white rounded-md shadow-lg overflow-hidden">
-            <a href="../html/complet-news.html?new=3">
+            <a href="complet-news.html?new=3">
                 <img src="../Images/default-image.png" class="w-full h-[300px] object-cover" alt="News Image">
                 <div class="p-4">
                     <h2 class="text-2xl font-bold mb-2">Noticia 3</h2>
@@ -116,7 +143,7 @@
         </div>
 
         <div class="bg-white rounded-md shadow-lg overflow-hidden">
-            <a href="../html/complet-news.html?new=4">
+            <a href="complet-news.html?new=4">
                 <img src="../Images/default-image.png" class="w-full h-[300px] object-cover" alt="News Image">
                 <div class="p-4">
                     <h2 class="text-2xl font-bold mb-2">Noticia 4</h2>
@@ -126,7 +153,7 @@
         </div>
 
         <div class="bg-white rounded-md shadow-lg overflow-hidden">
-            <a href="../html/complet-news.html?new=5">
+            <a href="complet-news.html?new=5">
                 <img src="../Images/default-image.png" class="w-full h-[300px] object-cover" alt="News Image">
                 <div class="p-4">
                     <h2 class="text-2xl font-bold mb-2">Noticia 5</h2>
@@ -136,7 +163,7 @@
         </div>
 
         <div class="bg-white rounded-md shadow-lg overflow-hidden">
-            <a href="../html/complet-news.html?new=6">
+            <a href="complet-news.html?new=6">
                 <img src="../Images/default-image.png" class="w-full h-[300px] object-cover" alt="News Image">
                 <div class="p-4">
                     <h2 class="text-2xl font-bold mb-2">Noticia 6</h2>
@@ -152,6 +179,8 @@
         <a href="#" class="text-white text-3xl mx-4 transition-colors duration-300 hover:text-[#79a2b4]"><i class="fab fa-facebook"></i></a>
     </footer>
 
-    <script src="../js/news.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/accessibility.js"></script>
+    <script src="../js/session.js"></script>
 </body>
 </html>

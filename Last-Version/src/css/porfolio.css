@@ -1,10 +1,11 @@
-/* Reset some default styles */
+@import url('../scss/style.css');
+@import url('../scss/mixins.scss');
+
 * {
     margin: 0;
     padding: 0;
 }
 
-/* Body and overall layout */
 body {
     display: flex; 
     flex-direction: column; 
@@ -16,11 +17,15 @@ body {
     letter-spacing: normal;
 }
 
-/* Botón de menú de accesibilidad */
+h1{
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
 .access-menu-button {
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    left: 20px;
     padding: 10px 20px;
     background: #333;
     color: #fff;
@@ -29,13 +34,12 @@ body {
     cursor: pointer;
     z-index: 1000;
     font-size: 1rem;
-  }
+}
   
-  /* Menú de accesibilidad */
-  .accessibility-menu {
+.accessibility-menu {
     position: fixed;
     bottom: 70px;
-    right: 20px;
+    left: 20px;
     width: 250px;
     padding: 15px;
     background: #f9f9f9;
@@ -47,36 +51,35 @@ body {
     opacity: 0;
     transform: translateY(20px);
     z-index: 1000;
-  
+
     h2 {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
     }
-  
+
     button,
     label {
-      display: block;
-      margin: 8px 0;
-      font-size: 1rem;
-      cursor: pointer;
+        display: block;
+        margin: 8px 0;
+        font-size: 1rem;
+        cursor: pointer;
     }
-  
+
     .reset-btn {
-      background-color: #d9534f;
-      color: white;
-      border: none;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 5px;
-      cursor: pointer;
+        background-color: #d9534f;
+        color: white;
+        border: none;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+        cursor: pointer;
     }
-  
+
     .reset-btn:hover {
-      background-color: #c9302c;
+        background-color: #c9302c;
     }
-  }
+}
   
-  /* Mostrar menú cuando está visible */
   .accessibility-menu.visible {
     display: block;
     opacity: 1;
@@ -101,7 +104,6 @@ body {
     filter: saturate(50%);
   }
 
-/* Header */
 header {
     padding: 10px 20px;
     display: flex;
@@ -112,7 +114,6 @@ header {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
 }
 
-/* Logo a la izquierda */
 .logo {
     display: flex;
     align-items: center;
@@ -127,14 +128,12 @@ header {
     transform: scale(1.1); 
 }
 
-/* Menú de navegación para escritorio */
 nav.desktop-nav {
     display: flex; 
     flex-direction: row; 
     align-items: center;
 }
 
-/* Enlaces en el menú de navegación */
 nav.desktop-nav .nav-links {
     display: flex; 
 }
@@ -150,7 +149,6 @@ nav.desktop-nav a:hover {
     text-decoration: underline; 
 }
 
-/* Icono del menú para móvil */
 .menu-icon {
     display: none; 
     font-size: 24px; 
@@ -162,21 +160,19 @@ nav.desktop-nav a:hover {
     transform: rotate(90deg); 
 }
 
-/* Botón de login dentro del menú */
 button {
     border: none;
     border-radius: 20px;
     padding: 10px 20px;
     cursor: pointer;
     font-size: 16px;
-    transition: background 0.3s ease; 
+    transition: background-color 0.3s ease; 
 }
 
 button:hover {
     transform: scale(1.05); 
 }
 
-/* Menú de navegación para móviles */
 .mobile-nav {
     display: none; 
     position: absolute;
@@ -186,7 +182,6 @@ button:hover {
     z-index: 999; 
 }
 
-/* Mostrar el menú cuando está activo */
 .mobile-nav.active {
     display: block; 
 }
@@ -203,14 +198,12 @@ button:hover {
     text-decoration: none; 
 }
 
-/* Grid de imágenes */
 .image-grid {
     display: grid;
     gap: 20px;
     padding: 20px;
 }
 
-/* Imagenes más grandes y adaptativas */
 .image-item {
     position: relative;
     text-align: center; 
@@ -231,12 +224,10 @@ button:hover {
     object-fit: cover; 
 }
 
-/* Texto sobre las imágenes */
 .image-text {
     display: none;
 }
 
-/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -248,18 +239,17 @@ button:hover {
     overflow: auto;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
-/* Mostrar texto en el modal */
 .modal-content {
     max-width: 90%;
     max-height: 70%;
-    margin: auto;
+    margin: 30px;
     display: block;
     transition: transform 0.3s; 
 }
 
-/* Estilo para mostrar texto en el modal */
 #modal-caption {
     margin-top: 10px;
     text-align: center;
@@ -279,7 +269,6 @@ button:hover {
     transform: scale(1.2); 
 }
 
-/* Footer */
 footer {
     display: flex;
     justify-content: flex-end; 
@@ -287,7 +276,6 @@ footer {
     padding: 10px 20px;
 }
 
-/* Estilo para los enlaces en el pie de página */
 footer a {
     margin-left: 20px;
     font-size: 24px;
@@ -295,31 +283,25 @@ footer a {
     transition: color 0.3s; 
 }
 
-/* Media Queries */
 @media (min-width: 768px) {
-    /* Dos imágenes por fila */
     .image-grid {
         grid-template-columns: repeat(2, 1fr);
     }
     
-    /* Aumentar tamaño de las imágenes */
     .image-item img {
         max-height: 600px;
     }
 }
 
 @media (min-width: 768px) {
-    /* Header */
     header {
         padding: 10px 20px; 
     }
 
-    /* Logo más grande en escritorio */
     .logo img {
         max-width: 85px; 
     }
-    
-    /* Mostrar icono de menú en escritorio */
+
     .menu-icon {
         display: none; 
     }
@@ -335,43 +317,35 @@ footer a {
 }
 
 @media (min-width: 992px) {
-    /* Tres imágenes por fila */
     .image-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    /* Aumentar tamaño de las imágenes */
     .image-item img {
         max-height: 700px;
     }
 }
 
 @media (min-width: 1200px) {
-    /* Cuatro imágenes por fila */
     .image-grid {
         grid-template-columns: repeat(4, 1fr);
     }
 
-    /* Aumentar tamaño de las imágenes */
     .image-item img {
         max-height: 800px;
     }
 }
 
-/* Media Queries - Versión móvil */
 @media (max-width: 767px) {
-    /* Mostrar icono de menú en móvil */
     .menu-icon {
         display: block;
     }
 
-    /* Esconder menú de navegación en móvil */
     nav.desktop-nav {
         display: none;
     }
 }
 
-/* Mostrar texto al hacer clic */
 .image-item.active .image-text {
     display: flex;
 }

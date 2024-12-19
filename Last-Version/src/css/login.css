@@ -1,4 +1,10 @@
-/* Estilos Generales */
+@import url('../scss/style.css');
+@import url('../scss/mixins.scss');
+
+*{
+    overflow-x: hidden;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-image: url('../Images/bg-login.png');
@@ -11,19 +17,104 @@ body {
     margin: 0;
 }
 
-/* Contenedor Principal */
+.accessibility-menu {
+    position: fixed; 
+    bottom: 60px;
+    right: 20px; 
+    width: 200px; 
+    padding: 10px; 
+    background: #f9f9f9; 
+    border: 1px solid #ddd;
+    border-radius: 8px; 
+    display: none; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+    transform: translateY(20px); 
+    z-index: 1002;
+}
+
+.accessibility-menu.visible {
+    display: block;
+    opacity: 1; 
+    transform: translateY(0);
+}
+
+.accessibility-menu h2 {
+    font-size: 1rem; 
+    margin-bottom: 10px;
+}
+
+.accessibility-menu button,
+.accessibility-menu label {
+    display: block; 
+    margin: 5px 0; 
+    font-size: 0.9rem; 
+    cursor: pointer;
+}
+
+.accessibility-menu .reset-btn {
+    background-color: #d9534f; 
+    color: white;
+    border: none;
+    padding: 8px;
+    margin-top: 10px;
+    border-radius: 5px; 
+    cursor: pointer;
+}
+
+.access-menu-button {
+    font-size: 36px; 
+    color: #497486; 
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    cursor: pointer;
+    z-index: 1001; 
+}
+
+.access-menu-button:hover {
+    color: #5a8ba0; 
+}
+
+.accessibility-menu .reset-btn:hover {
+    background-color: #c9302c; 
+}
+  
+  .accessibility-menu.visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  body[data-contrast="grayscale"] {
+    filter: grayscale(100%);
+  }
+  body[data-contrast="dark"] {
+    background: #333;
+    color: #eee;
+  }
+  body[data-contrast="light"] {
+    background: #fff;
+    color: #000;
+  }
+  body[data-contrast="high-saturation"] {
+    filter: saturate(200%);
+  }
+  body[data-contrast="low-saturation"] {
+    filter: saturate(50%);
+  }
+
 .container {
     display: flex; 
     width: 100%;
     height: 100%;
 }
 
-/* Contenedor de la Imagen de Fondo */
 .image-background {
     flex: 1;
 }
 
-/* Contenedor del Formulario */
 .form-container {
     flex: 2;
     background: rgba(255, 255, 255, 0.7);
@@ -34,7 +125,6 @@ body {
     position: relative;
 }
 
-/* Ícono de Retroceso */ 
 .back-button {
     position: absolute; 
     top: 20px; 
@@ -43,26 +133,28 @@ body {
     font-size: 24px;
 }
 
-/* Efecto Hover en Botón de Retroceso */
 .back-button:hover {
     text-decoration: underline;
 }
 
-/* Ícono de Usuario */
 .profile-icon {
     font-size: 80px; 
     color: grey; 
     margin-bottom: 20px;
 }
 
-/* Contenedor de los Inputs */
 .input-container {
     position: relative;
-    margin: 15px 0; 
+    margin-bottom: 20px; 
 }
 
-/* Inputs de Email y Contraseña */
-input[type="email"], input[type="password"] {
+.input-container label {
+    display: block; 
+    margin-bottom: 5px; 
+    font-weight: bold; 
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
     width: 100%;
     padding: 10px 30px; 
     border: 1px solid #ccc;
@@ -71,16 +163,14 @@ input[type="email"], input[type="password"] {
     box-sizing: border-box;
 }
 
-/* Estilo del Ícono en Inputs */
 .input-container i {
     position: absolute;
     left: 10px;
-    top: 50%;
+    top: 68%;
     transform: translateY(-50%);
     font-size: 18px; 
 }
 
-/* Estilo de Olvidé mi Contraseña */
 .forgot-password {
     display: block;
     margin-top: 15px;
@@ -88,7 +178,6 @@ input[type="email"], input[type="password"] {
     font-size: 16px; 
 }
 
-/* Efecto Hover en Olvidé mi Contraseña */
 .forgot-password:hover {
     text-decoration: underline;
 }
@@ -98,7 +187,6 @@ input[type="email"], input[type="password"] {
     margin-top: 10px;
 }
 
-/* Estilo del Botón */
 button {
     width: 100%;
     padding: 10px; 
@@ -109,7 +197,6 @@ button {
     font-size: 16px; 
 }
 
-/* Media Query para dispositivos móviles */
 @media (max-width: 767px) {
     .container {
         flex-direction: column; 
@@ -144,7 +231,6 @@ button {
     }
 }
 
-/* Media Query para dispositivos de escritorio (768px) */
 @media (min-width: 768px) {
     body {
         height: 100vh; 

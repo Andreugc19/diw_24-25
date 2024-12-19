@@ -14,6 +14,7 @@
                 <li><a href="#" onclick="showActivities('UD1')">Unit 1</a></li>
                 <li><a href="#" onclick="showActivities('UD3')">Unit 3</a></li>
                 <li><a href="#" onclick="showActivities('UD4')">Unit 4</a></li>
+                <li><a href="#" onclick="showActivities('UD6')">Unit 6</a></li>
                 <li><a href="#" onclick="showActivities('Last-Version')">Last Version</a></li>
             </ul>
         </nav>
@@ -67,12 +68,20 @@
                         <a href="./U4/Act2_Andreu/index.html" class="card-button">Go to Activity</a>
                     </div>
                 `;
+            } else if (unit === 'UD6') {
+                activitiesContainer.innerHTML = `
+                    <div class="card">
+                        <div class="card-title">Activity 2</div>
+                        <div class="card-image"></div>
+                        <a href="./U6/act2_jquery/src/html/index.html" class="card-button">Go to Activity</a>
+                    </div>
+                `;
             } else if (unit === 'Last-Version') {
                 activitiesContainer.innerHTML = `
                     <div class="card">
                         <div class="card-title">Last Version</div>
                         <div class="card-image"></div>
-                        <a href="./Last-Version/src/index.html" class="card-button">Go to Activity</a>
+                        <a href="./Last-Version/src/html/index.html" class="card-button">Go to Activity</a>
                     </div>
                 `;
             }

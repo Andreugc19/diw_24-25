@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <title>Admin Page</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="../Images/Logo.png" alt="Principal Logo The Blue Whale"></a>
+        </div>
+
+        <nav class="desktop-nav">
+            <div class="nav-links">
+                <a href="#">Historia</a>
+                <a href="porfolio.html">Portfolio</a>
+                <a href="news.html">Publicacions</a>
+                <a href="al-voltant-balena.html">Al Voltant de la Balena</a>
+                <a href="admin.html" id="edit-users-link-desktop" style="display:none;">Edit Users</a>
+            </div>
+            <a href="login.html"><button id="login-btn-desktop">Login</button></a>
+            <a href="#" id="logout-btn-desktop" style="display:none;"><button>Logout</button></a>
+        </nav>
+
+        <nav class="mobile-nav">
+            <div class="nav-links">
+                <a href="#">Historia</a>
+                <a href="porfolio.html">Portfolio</a>
+                <a href="news.html">Publicacions</a>
+                <a href="al-voltant-balena.html">Al Voltant de la Balena</a>
+                <a href="admin.html" id="edit-users-link-mobile" style="display:none;">Edit Users</a>
+                <a href="login.html"><button id="login-btn-mobile">Login</button></a>
+                <a href="#" id="logout-btn-mobile" style="display:none;"><button>Logout</button></a>
+            </div>
+        </nav>
+
+        <div class="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <i class="access-menu-button fa-solid fa-universal-access"></i>
+
+    <div class="accessibility-menu">
+        <h2>Accessibility Options</h2>
+        <button class="contrast-btn" data-contrast="grayscale">Grayscale</button>
+        <button class="contrast-btn" data-contrast="dark">Dark Contrast</button>
+        <button class="contrast-btn" data-contrast="light">Light Contrast</button>
+        <button class="contrast-btn" data-contrast="high-saturation">High Saturation</button>
+        <button class="contrast-btn" data-contrast="low-saturation">Low Saturation</button>
+        
+        <div class="font-settings">
+            <label for="font-size">Font Size:</label>
+            <input type="range" id="font-size" min="1" max="1.5" step="0.1" value="1">
+            
+            <label for="line-spacing">Line Spacing:</label>
+            <input type="range" id="line-spacing" min="1.73" max="2" step="0.1" value="1">
+            
+            <label for="word-spacing">Word Spacing:</label>
+            <input type="range" id="word-spacing" min="0.1" max="1" step="0.1" value="1">
+            
+            <label for="letter-spacing">Letter Spacing:</label>
+            <input type="range" id="letter-spacing" min="0" max="0.5" step="0.1" value="1">
+        </div>
+
+        <button class="reset-btn">Reset</button>
+    </div>
+    
+    <footer>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/accessibility.js"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/session.js"></script>
+</body>
+</html>

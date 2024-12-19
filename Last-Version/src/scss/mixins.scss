@@ -1,0 +1,12 @@
+// Mixin para botones
+@mixin button-style($bg-color, $text-color, $padding: 10px 20px) {
+    background-color: $bg-color;
+    color: $text-color;
+    padding: $padding;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+  }

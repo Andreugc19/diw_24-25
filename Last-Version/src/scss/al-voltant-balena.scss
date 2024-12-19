@@ -1,25 +1,13 @@
-// Variables de color
+@import url('../scss/style.scss');
+@import url('../scss/mixins.scss');
+
 $primary: linear-gradient(135deg, #395C6b, #64A0BA);
 $bg-color: #B5E1D9;
-$child-elements: #64A0BA;
+$child-elements: #497486;
 $child-elements_hover: #5a8ba0;
 $text-color: #000;
 $text-invers: #fff;
 
-// Mixin para botones
-@mixin button-style($bg-color, $text-color, $padding: 10px 20px) {
-  background-color: $bg-color;
-  color: $text-color;
-  padding: $padding;
-  border: none;
-  border-radius: 20px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-
-}
-
-// Estilos generales
 * {
   margin: 0;
   padding: 0;
@@ -148,7 +136,7 @@ body {
   .access-menu-button {
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    left: 20px;
     padding: 10px 20px;
     background: #333;
     color: #fff;
@@ -162,7 +150,7 @@ body {
   .accessibility-menu {
     position: fixed;
     bottom: 70px;
-    right: 20px;
+    left: 20px;
     width: 250px;
     padding: 15px;
     background: #f9f9f9;
@@ -258,7 +246,6 @@ body {
   }
 }
 
-// Media Queries
 @media (min-width: 768px) {
   header {
         padding: 10px 20px;
