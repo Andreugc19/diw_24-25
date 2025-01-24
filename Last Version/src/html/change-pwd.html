@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiar Contraseña</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="image-background"></div>
+        <div class="form-container">
+            <form id="change-password-form" onsubmit="return changePassword(event)">
+                <div class="input-container">
+                    <label for="new-password">Nueva Contraseña</label>
+                    <input type="password" id="new-password" required>
+                </div>
+                <div class="input-container">
+                    <label for="confirm-password">Confirmar Contraseña</label>
+                    <input type="password" id="confirm-password" required>
+                </div>
+                <p id="error-message" style="color: red; display: none;"></p>
+                <button type="submit">Guardar Contraseña</button>
+            </form>
+            <i class="access-menu-button fa-solid fa-universal-access"></i>
+        </div>
+    </div>
+    <script src="../js/change-pwd.js"></script>
+</body>
+</html>
