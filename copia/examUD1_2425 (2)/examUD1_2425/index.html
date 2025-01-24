@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIW - UD1 and UD2 exam</title>
+  <link rel="stylesheet" href="./fontawesome-6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <div class="logo">
+        <img src="img/logo_dark_bg.png" alt="logo">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#"><i class="fa-solid fa-border-all"></i>Overview</a></li>
+          <li><a href="#"><i class="fa-solid fa-arrows-spin"></i>Transactions</a></li>
+          <li><a href="#"><i class="fa-solid fa-users"></i>Customers</a></li>
+          <li><a href="#"><i class="fa-solid fa-chart-simple"></i>Reports</a></li>
+          <li><a href="#"><i class="fa-solid fa-gear"></i>Settings</a></li>
+        </ul>
+      </nav>
+      <nav class="logout">
+        <ul>
+          <li><a href="#"><i class="fa-solid fa-right-from-bracket"></i>Log Out</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="main-content">
+      <header>
+        <h1>Dashboard</h1>
+        <div class="header-right">
+          <input type="search" placeholder="Search...">
+          <i class="fa-solid fa-circle-user"></i>
+          <i class="fa-solid fa-angle-down"></i>
+          <div class="hamburger" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></div>
+        </div>
+      </header>
+
+      <main>
+        <section class="cards">
+          <div class="card">
+            <h2>Total ammount</h2>
+            <h3>€ 12.k</h3>
+          </div>
+          <div class="card">
+            <h2>Current customers</h2>
+            <h3>16.004</h3>
+          </div>
+          <div class="card">
+            <h2>Active customers</h2>
+            <h3>36%</h3>
+          </div>
+          <div class="card large">
+            <h2>Support tickets</h2>
+            <div class="set-buttons">
+              <button class="btn-all">All</button>
+              <button class="btn-open">Open</button>
+              <button class="btn-pending">Pending</button>
+              <button class="btn-closed">Closed</button>
+            </div>
+            <table>
+              <tr>
+                <td><div class="circle"></div></td>
+                <td>user@iesjoanramis.org</td>
+                <td>Login problem</td>
+              </tr>
+              <tr>
+                <td><div class="circle"></div></td>
+                <td>user2@iesjoanramis.org</td>
+                <td>Billing inquiry</td>
+              </tr>
+              <tr>
+                <td><div class="circle closed"></div></td>
+                <td>user65432@iesjoanramis.org</td>
+                <td>Login problem</td>
+              </tr>
+              <tr>
+                <td><div class="circle pending"></div></td>
+                <td>user2@iesjoanramis.org</td>
+                <td>Product return inquiry</td>
+              </tr>
+              <tr>
+                <td><div class="circle"></div></td>
+                <td>user6666@iesjoanramis.org</td>
+                <td>Billing inquiry</td>
+              </tr>
+            </table>            
+            <button class="btn-primary">Read more</button>
+          </div>
+          <div class="card">
+            <h2>Card 6</h2>
+            <img src="img/art.png" alt="art">
+          </div>
+          <div class="card">
+            <img src="img/trend_stats.png" alt="stats">
+            <button class="btn-primary">Read more</button>
+          </div>
+          <div class="card large">
+            <h2>Card 8</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam eligendi unde nihil! Consectetur qui beatae maxime soluta expedita odio ex incidunt, deleniti impedit doloremque? Enim fugit optio explicabo suscipit saepe voluptatem eum in, veritatis repellat rem ipsa sapiente reiciendis. Alias, laboriosam. Beatae nulla deserunt officiis voluptate soluta voluptas ipsam, dolore itaque ipsa, cum cupiditate culpa eveniet saepe vitae pariatur consectetur. Animi dolore iure ipsum voluptate non odit blanditiis consequuntur dolorum!</p>
+            <button class="btn-primary">Read more</button>
+          </div>
+          <div class="card extralarge">
+            <h2>Card 9</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur neque minima debitis repudiandae. Corporis blanditiis sint id vero itaque ullam!</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+  
+  <script>
+    const aside = document.querySelector('aside');
+    const hamburger = document.querySelector('.hamburger');
+
+    function toggleSidebar() {
+      aside.classList.toggle('active');
+    }
+
+    document.addEventListener('click', (event) => {
+      const isClickInsideSidebar = aside.contains(event.target);
+      const isClickOnHamburger = hamburger.contains(event.target);
+
+      if (!isClickInsideSidebar && !isClickOnHamburger) {
+        aside.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>

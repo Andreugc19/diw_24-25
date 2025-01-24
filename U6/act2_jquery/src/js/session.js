@@ -9,6 +9,10 @@ $(document).ready(function () {
             if (loggedInUser.edit_users === true) {
                 $('#edit-users-link-desktop, #edit-users-link-mobile').show();
             }
+
+            if (loggedInUser.edit_news === true) {
+                $('#edit-news-link').show();
+            }
         } else {
             $('#login-btn-desktop, #login-btn-mobile').show();
             $('#logout-btn-desktop, #logout-btn-mobile').hide();

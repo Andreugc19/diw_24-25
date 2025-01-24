@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 3 exam - Tailwind part</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+  <header class="bg-blue-600 text-white">
+    <div class="flex justify-between items-center p-8">
+      <h1 class="text-3xl font-bold">My Blog</h1>
+      <nav class="space-x-4">
+        <a href="#" class="hover:text-blue-200">Home</a>
+        <a href="#" class="hover:text-blue-200">About</a>
+        <a href="#" class="hover:text-blue-200">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="p-6">
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  
+      <div class="flex flex-col justify-between space-y-4">
+        <h1 class="text-2xl font-bold">Title of the Post</h1>
+        <p class="text-sm text-gray-500">By <span class="font-bold">Author</span> on <span>24 November 2024</span></p>
+        <p class="text-lg">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel euismod nisi. Donec eu nibh sit amet turpis bibendum dictum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium iure debitis ipsum sequi veniam libero inventore nihil cum beatae, ab natus asperiores saepe quo iste ipsa cupiditate alias consequuntur enim repellendus officiis placeat. Incidunt quis autem quia corrupti voluptate quod repellendus dolorum facere quasi modi dolorem, voluptas repellat sapiente nisi nec sodales nisi dictum turpis bibendum. Officiis placeat incidunt quis autem.
+        </p>
+        <p class="text-lg">
+          Aenean fermentum mi vitae justo facilisis, nec sodales nisi dictum. Sed in vehicula mi, vitae blandit lorem. Donec scelerisque tincidunt metus non tincidunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam officiis placeat praesentium culpa deleniti error neque dignissimos? Adipisci, aperiam rerum?
+        </p>
+        <p class="text-lg">
+          Fusce non nulla sit amet nulla eleifend tincidunt. Integer sed nulla ac neque pharetra mollis nec ut sapien. Curabitur eget elit vel augue scelerisque euismod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente voluptatibus laborum numquam enim magni culpa? Non officiis ipsa expedita saepe! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et doloribus cumque sunt.
+        </p>
+      </div>
+  
+      <div class="flex justify-center md:justify-center lg:justify-start order-1 md:order-2">
+        <img src="600x400.png" alt="Image of the post" class="w-full h-auto md:w-3/4 lg:w-72 rounded-md shadow-lg">
+      </div>
+  
+    </section>
+  </main>
+
+  <footer class="bg-blue-950 text-white">
+    <div class="flex flex-col items-center p-4">
+      <p class="text-xs">&copy; 2024 My Blog</p>
+      <div class="-space-y-2 mt-2 text-sm">
+        <a href="#" class="hover:text-blue-300">Privacy Policy</a>
+        <a href="#" class="hover:text-blue-300">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
+
+
+

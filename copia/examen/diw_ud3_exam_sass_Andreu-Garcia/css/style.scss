@@ -1,0 +1,72 @@
+$light-grey: #f0f0f0;
+$dark-grey: #333;
+$orange: #ff6347;
+$shadow-light: rgba(0, 0, 0, 0.3);
+$shadow-dark: rgba(0, 0, 0, 0.7);
+
+@mixin hoverEffect($color, $box-shadow-color, $x-offset, $y-offset, $blur-radius) {
+  &:hover {
+    background-color: $color;
+    box-shadow: $x-offset $y-offset $blur-radius $box-shadow-color;
+  }
+}
+
+body {
+    background-color: $light-grey;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header {
+  padding: 20px;
+  text-align: center;
+
+  h1 {
+    color: $dark-grey;
+  }
+}
+
+main {
+  padding: 20px;
+  margin: 20px 0;
+
+  section {
+    h2 {
+      color: $dark-grey;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+
+      li {
+        color: $dark-grey;
+        border: 2px solid $dark-grey;
+        padding: 10px;
+        margin-bottom: 10px;
+        transition: background-color 0.3s, box-shadow 0.3s; 
+        
+        @include hoverEffect($orange, $shadow-dark, 2px, 2px, 5px);
+      }
+    }
+  }
+
+  button {
+    @include hoverEffect($orange, $shadow-dark, 4px, 4px, 8px);
+    background-color: $dark-grey;
+    color: $light-grey;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+}
+
+footer {
+  background-color: $shadow-light; 
+  color: black;
+  padding: 2px;
+  text-align: center;
+}

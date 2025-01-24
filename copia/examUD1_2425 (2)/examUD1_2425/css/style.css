@@ -1,0 +1,109 @@
+:root {
+  --color-bg: #e7e7dd;
+  --color-primary: #629677;
+  --color-secondary: #D496A7;
+  --color-accent: #995D81;
+  --color-black: #000;
+  --color-white: #FFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.layout {
+  display: flex;
+}
+
+aside {
+  background-color: var(--color-black);
+  width: 250px;
+}
+
+aside a {
+  color: var(--color-bg);
+}
+
+header {
+  background-color: var(--color-white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-right {
+  display: flex;
+  gap: 10px;
+}
+
+main {
+  background-color: var(--color-bg);
+  padding: 10px;
+}
+
+.main-content {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  /* margin-left: 250px; */
+}
+
+img[alt="art"] {
+  width: 100%;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+
+}
+
+.card:first-child {
+  background-color: var(--color-primary);
+  width: 30%;
+  margin: 10px;
+}
+
+.card:nth-child(2) {
+  background-color: var(--color-accent);
+  width: 30%;
+  margin: 10px;
+}
+
+.card:nth-child(3) {
+  background-color: var(--color-secondary);
+  width: 30%;
+  margin: 10px;
+}
+
+.card {
+  background-color: var(--color-white);
+  border-radius: 8px;
+}
+
+@media (max-width:768px) {
+  aside {
+    transform: translateX(-100%);
+  }
+
+  aside .active {
+    transform: translateX(0);
+  }
+}
+
+@media (min-width:768px) {
+  .card {
+    grid-template-columns: repeat(3fr, 1fr);
+    grid-template-rows: 150px 1fr;
+  }
+
+  .large {
+    grid-column: span 2;
+  }
+
+  .extra-large {
+    grid-row: span 3;
+  }
+}

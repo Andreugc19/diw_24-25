@@ -26,6 +26,76 @@
         body[data-contrast="low-saturation"] {
             filter: saturate(50%);
         }
+        .created-news {
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: space-between; 
+        }
+        .news-item {
+            flex: 0 1 calc(33.33% - 16px);
+            box-sizing: border-box; 
+            margin: 8px; 
+            border: 1px solid #ccc;
+            padding: 16px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .news-item h2 {
+            margin: 0 0 8px;
+            font-weight: bold; 
+            font-size: 1.5rem; 
+        }
+        .news-item p {
+            margin: 0 0 8px;
+        }
+        .news-content img {
+            max-width: 100%;
+            height: auto;
+        }
+        .view-more-btn {
+            background-color: #497486; 
+            color: white; 
+            border: 2px solid #497486; 
+            padding: 10px 20px; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .view-more-btn:hover {
+            background-color: white;
+            color: #5a8ba0;
+        }
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; 
+        }
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-btn:hover,
+        .close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen bg-[#B5E1D9] text-black">
@@ -109,67 +179,20 @@
         <button id="reset-btn" class="w-full bg-red-500 text-white py-2 rounded-md text-sm hover:bg-red-600">Reset</button>
     </div>
 
-    <h1 class="text-4xl font-bold p-4 ml-4">NOVES ACTUALITATS</h1>
+    <h1 class="text-4xl font-bold p-4">NOVES ACTUALITATS</h1>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-        <div class="bg-white rounded-md shadow-lg overflow-hidden">
-            <a href="complet-news.html?new=1">
-                <img src="../Images/default-image.png" class="w-full h-[300px] object-cover" alt="News Image">
-                <div class="p-4">
-                    <h2 class="text-2xl font-bold mb-2">Noticia 1</h2>
-                    <p class="text-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique qui fugiat nulla...</p>
-                </div>
-            </a>
-        </div>
+    <div id="edit-news-link" style="display:none;">
+        <a href="editor.html" class="ml-4"><button class="bg-[#497486] w-[150px] rounded-lg p-[8px] text-white">Nova Publicació</button></a>
+    </div>
 
-        <div class="bg-white rounded-md shadow-lg overflow-hidden">
-            <a href="complet-news.html?new=2">
-                <img src="../Images/default-image.png" class="w-full h-[300px] object-cover" alt="News Image">
-                <div class="p-4">
-                    <h2 class="text-2xl font-bold mb-2">Noticia 2</h2>
-                    <p class="text-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique qui fugiat nulla...</p>
-                </div>
-            </a>
-        </div>
-
-        <div class="bg-white rounded-md shadow-lg overflow-hidden">
-            <a href="complet-news.html?new=3">
-                <img src="../Images/default-image.png" class="w-full h-[300px] object-cover" alt="News Image">
-                <div class="p-4">
-                    <h2 class="text-2xl font-bold mb-2">Noticia 3</h2>
-                    <p class="text-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique qui fugiat nulla...</p>
-                </div>
-            </a>
-        </div>
-
-        <div class="bg-white rounded-md shadow-lg overflow-hidden">
-            <a href="complet-news.html?new=4">
-                <img src="../Images/default-image.png" class="w-full h-[300px] object-cover" alt="News Image">
-                <div class="p-4">
-                    <h2 class="text-2xl font-bold mb-2">Noticia 4</h2>
-                    <p class="text-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique qui fugiat nulla...</p>
-                </div>
-            </a>
-        </div>
-
-        <div class="bg-white rounded-md shadow-lg overflow-hidden">
-            <a href="complet-news.html?new=5">
-                <img src="../Images/default-image.png" class="w-full h-[300px] object-cover" alt="News Image">
-                <div class="p-4">
-                    <h2 class="text-2xl font-bold mb-2">Noticia 5</h2>
-                    <p class="text-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique qui fugiat nulla...</p>
-                </div>
-            </a>
-        </div>
-
-        <div class="bg-white rounded-md shadow-lg overflow-hidden">
-            <a href="complet-news.html?new=6">
-                <img src="../Images/default-image.png" class="w-full h-[300px] object-cover" alt="News Image">
-                <div class="p-4">
-                    <h2 class="text-2xl font-bold mb-2">Noticia 6</h2>
-                    <p class="text-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique qui fugiat nulla...</p>
-                </div>
-            </a>
+    <div class="created-news"></div>
+    <div id="news-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalAuthor"></p>
+            <p id="modalDate"></p>
+            <div id="modalContent"></div>
         </div>
     </div>
 
@@ -178,9 +201,10 @@
         <a href="#" class="text-white text-3xl mx-4 transition-colors duration-300 hover:text-[#79a2b4]"><i class="fab fa-twitter"></i></a>
         <a href="#" class="text-white text-3xl mx-4 transition-colors duration-300 hover:text-[#79a2b4]"><i class="fab fa-facebook"></i></a>
     </footer>
-
+    
     <script src="../js/script.js"></script>
     <script src="../js/accessibility.js"></script>
     <script src="../js/session.js"></script>
+    <script src="../js/news.js"></script>
 </body>
 </html>
