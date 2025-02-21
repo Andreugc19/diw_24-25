@@ -50,4 +50,30 @@ $(document).ready(function() {
     formContainer.append(backButton, profileIcon, form, accessMenuButton);
     container.append(imageBackground, formContainer);
     $('body').append(container);
+
+    $('#login-form').on('submit', function(event) {
+        event.preventDefault();
+
+        const newPassword = $('#password').val().trim();
+
+        if (newPassword) {
+            const newSalt = CryptoJS.lib.WordArray.random(128/8).toString();
+            const hashedPassword = CryptoJS.SHA256(newPassword + newSalt).toString();
+    
+            user.password_hash = hashedPassword;
+            user.salt = newSalt;
+        }
+
+        user.name = $('#name').val();
+        user.email = $('#email').val();
+        user.edit_users = $('#edit-users').is(':checked');
+        user.edit_news = $('#edit-news').is(':checked');
+        user.edit_bone_files = $('#edit-bone-files').is(':checked');
+        user.active = $('#active').is(':checked');
+
+        users = users.map(u => u.id === userId ? user : u);
+        localStorage.setItem('users', JSON.stringify(users));
+
+        window.location.href = 'admin.html';
+    });
 });

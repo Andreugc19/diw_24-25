@@ -1,0 +1,33 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+ </head>
+ <body>
+    <main>
+        <h1>Tasks</h1>
+        <form id="task-form">
+            <label for="task-title">Title</label>
+            <input type="text" id="task-title" palceholder="Task Title"></input>
+
+            <label for="task-description">Description</label>
+            <textarea id="task-description" row="4" palceholder="Task Description"></textarea>
+
+            <label for="task-priority">Priority</label>
+            <select id="task-priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+
+            <button id="btn-task-save">Save Task</button>
+        </form>
+    </main>
+
+    <div id="tasks-container"></div>
+    <!-- <script type="module" src="firebase.js"></script> -->
+    <script type="module" src="index.js"></script>
+ </body>
+ </html>
