@@ -2,14 +2,14 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebas
 import { getFirestore } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC082oOhJOg2irxPCi3ldEoB_cHHjiPBEM",
-    authDomain: "tasks-8e33c.firebaseapp.com",
-    projectId: "tasks-8e33c",
-    storageBucket: "tasks-8e33c.firebasestorage.app",
-    messagingSenderId: "459940229823",
-    appId: "1:459940229823:web:c8a7860972449c4aa18c0a"
-};
-
+    apiKey: "AIzaSyDHPNdKl7YwOy32as71CsIWlI1ElrEabnY",
+    authDomain: "act1-u5.firebaseapp.com",
+    projectId: "act1-u5",
+    storageBucket: "act1-u5.firebasestorage.app",
+    messagingSenderId: "781058376389",
+    appId: "1:781058376389:web:e47d47b660e82f4dd526ac"
+  };
+  
 const app = initializeApp(firebaseConfig);
 
 const db = getFirestore();

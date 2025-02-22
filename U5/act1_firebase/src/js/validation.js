@@ -1,6 +1,38 @@
 import { collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
 import { db } from "./firebase.js";
 
+async function createAdminUserIfNotExists() {
+    const adminEmail = "desenvolupador@iesjoanramis.org";
+    const predefinedPassword = "Ramis.20";
+
+    try {
+        const usersSnapshot = await getDocs(collection(db, "users"));
+        const adminExists = usersSnapshot.docs.some(doc => doc.data().email === adminEmail);
+
+        if (!adminExists) {
+
+            const salt = CryptoJS.lib.WordArray.random(128 / 8).toString();
+            const hashedPassword = CryptoJS.SHA256(predefinedPassword + salt).toString();
+
+            await addDoc(collection(db, "users"), {
+                name: "admin",
+                email: adminEmail,
+                password_hash: hashedPassword,
+                salt: salt,
+                edit_users: true,
+                edit_news: true,
+                edit_bone_files: true,
+                active: true,
+                is_first_login: true
+            });
+
+        } else {
+        }
+    } catch (error) {
+        console.error("Error al verificar/crear a l\'usuari administrador:", error);
+    }
+}
+
 async function validateForm(event) {
     event.preventDefault();
 
@@ -127,5 +159,6 @@ async function validateLoginForm(event) {
     }
 }
 
+createAdminUserIfNotExists();
 window.validateForm = validateForm;
 window.validateLoginForm = validateLoginForm;
