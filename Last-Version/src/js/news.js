@@ -1,36 +1,53 @@
-import { collection, getDocs, doc, deleteDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
-import { db } from "./firebase.js";
+import { getPublishedNews, deleteNews, saveNews } from "./firebase.js";
 
 async function loadNews() {
     const newsContainer = $('.created-news');
     newsContainer.empty();
 
-    try {
-        const querySnapshot = await getDocs(collection(db, "news"));
-        querySnapshot.forEach(doc => {
-            const post = doc.data();
-            const newsItem = `
-                <div class="news-item" data-id="${doc.id}">
-                    <h2>${post.header.title}</h2>
-                    <p>Autor: ${post.header.author} | Fecha: ${post.header.date}</p>
-                    <div class="news-content">
-                        ${post.columns.map(element => { 
-                            if (element.type === "paragraph") {
-                                return `<p>${element.content}</p>`;
-                            } else if (element.type === "image") {
-                                return `<img src="${element.src}" alt="Imagen">`;
-                            }
-                        }).join('')}
-                    </div>
-                    <button class="view-more-btn" data-id="${doc.id}">Veure més</button>
-                    <button class="delete-news-btn" data-id="${doc.id}">Eliminar</button>
-                </div>
-            `;
-            newsContainer.append(newsItem);
+    const newsList = await getPublishedNews();
+
+    newsList.forEach(post => {
+        const title = post.header?.title || "Sense Titol";
+        const author = post.header?.author || "Desconegut";
+        const date = post.header?.date || "Data no disponible";
+
+        let previewContent = "";
+        let fullContent = "";
+
+        post.columns?.forEach((column, colIndex) => {
+            column.elements?.forEach((element, elIndex) => {
+                if (element.type === "paragraph") {
+                    if (colIndex === 0 && elIndex === 0) { 
+                        previewContent += `<p>${element.content.substring(0, 100)}...</p>`;
+                    }
+                    fullContent += `<p>${element.content}</p>`;
+                } else if (element.type === "image") {
+                    if (colIndex === 0 && elIndex === 0) { 
+                        previewContent += `<img src="${element.src}" alt="Imagen">`;
+                    }
+                    fullContent += `<img src="${element.src}" alt="Imagen">`;
+                }
+            });
         });
-    } catch (error) {
-        console.error("Error carregant les noticies:", error);
-    }
+
+        const newsItem = `
+            <div class="news-item" data-id="${post.id}">
+                <h2>${title}</h2>
+                <p>Autor: ${author} | Data: ${date}</p>
+                <div class="news-preview">${previewContent}</div>
+                <button class="view-more-btn" data-id="${post.id}" 
+                    data-title="${title}" 
+                    data-author="${author}" 
+                    data-date="${date}" 
+                    data-content='${fullContent}'>
+                    Veure més
+                </button>
+                <button class="delete-news-btn" data-id="${post.id}">Eliminar</button>
+            </div>
+        `;
+
+        newsContainer.append(newsItem);
+    });
 }
 
 function createDeleteModal() {
@@ -50,32 +67,18 @@ function createDeleteModal() {
 
 let postIdToDelete = null;
 
-$(document).on('click', '.view-more-btn', async function() {
-    const postId = $(this).data('id');
-    const modal = $('#news-modal');
-    modal.fadeIn();
+$(document).on('click', '.view-more-btn', function() {
+    const title = $(this).data('title');
+    const author = $(this).data('author');
+    const date = $(this).data('date');
+    const content = $(this).data('content');
 
-    try {
-        const docSnap = await getDoc(doc(db, "news", postId));
-        if (docSnap.exists()) {
-            const post = docSnap.data();
-            $('#modalTitle').text(post.header.title);
-            $('#modalAuthor').text(`Autor: ${post.header.author}`);
-            $('#modalDate').text(`Fecha: ${post.header.date}`);
+    $('#modalTitle').text(title);
+    $('#modalAuthor').text(`Autor: ${author}`);
+    $('#modalDate').text(`Data: ${date}`);
+    $('#modalContent').html(content);
 
-            const modalContent = post.columns.map(element => { 
-                if (element.type === "paragraph") {
-                    return `<p>${element.content}</p>`;
-                } else if (element.type === "image") {
-                    return `<img src="${element.src}" alt="Imagen" style="max-width: 100%;">`;
-                }
-            }).join('');
-
-            $('#modalContent').html(modalContent);
-        }
-    } catch (error) {
-        console.error("Error al obtenir la noticia:", error);
-    }
+    $('#news-modal').fadeIn();
 });
 
 $('#closeModal').on('click', function() {
@@ -95,24 +98,22 @@ $(document).on('click', '.delete-news-btn', function() {
 });
 
 $(document).on("click", "#cancel-delete, #close-delete-modal", function () {
-    $("#delete-modal").fadeOut();
+    $("#delete-modal").fadeOut(); 
     postIdToDelete = null;
 });
 
 $(document).on("click", "#confirm-delete", async function () {
     if (postIdToDelete) {
-        try {
-            await deleteDoc(doc(db, "news", postIdToDelete));
-            $(`.news-item[data-id="${postIdToDelete}"]`).remove(); 
-        } catch (error) {
-            console.error("Error eliminant la noticia:", error);
+        const success = await deleteNews(postIdToDelete);
+        if (success) {
+            $(`.news-item[data-id="${postIdToDelete}"]`).remove();
         }
     }
     $("#delete-modal").fadeOut();
     postIdToDelete = null;
 });
 
-async function saveNews() {
+async function processNewsSave() {
     const rows = [];
     $(".row").each(function () {
         const title = $(this).find(".post-title").val();
@@ -149,18 +150,14 @@ async function saveNews() {
         }
     });
 
-    try {
-        for (const row of rows) {
-            await addDoc(collection(db, "news"), row);
-        }
-        loadNews();
-    } catch (error) {
-        console.error("Error guardant la noticia:", error);
+    for (const row of rows) {
+        await saveNews(row);
     }
+    loadNews();
 }
 
 $(document).on("click", "#save-config", function () {
-    saveNews();
+    processNewsSave();
 });
 
 $(document).ready(() => {

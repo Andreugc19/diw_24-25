@@ -1,4 +1,4 @@
-// Función para cargar la imagen
+// Carregar la imagte
 function loadImage(event) {
   const reader = new FileReader();
   reader.onload = function (e) {
@@ -8,7 +8,7 @@ function loadImage(event) {
   reader.readAsDataURL(event.target.files[0]);
 }
 
-// Función para editar el párrafo
+// Poder editar es paragraf
 function editParagraph(element) {
   const currentText = $(element).text();
   $("#edit-paragraph-text").val(currentText);
@@ -16,7 +16,7 @@ function editParagraph(element) {
   $("#edit-paragraph-modal").data("targetElement", $(element));
 }
 
-// Función para mostrar mensajes personalizados en el modal
+// Missatges de popup
 function showModalMessage(message) {
   $("#modal-message-text").text(message);
   $("#message-modal").fadeIn();
@@ -32,7 +32,7 @@ $("#message-modal").on("click", function(e) {
   }
 });
 
-// Función para guardar los cambios en el párrafo editado
+// Guardar la noticia despres de editar-la
 $("#save-paragraph-changes").on("click", function () {
   const newText = $("#edit-paragraph-text").val(); 
   const targetElement = $("#edit-paragraph-modal").data("targetElement");  
@@ -65,7 +65,6 @@ $(function () {
     }
   });
 
-  // Reemplazar alerta en la función initializeDeleteButtons
   function initializeDeleteButtons() {
     $(".delete-row-btn").off("click").on("click", function () {
       const rowToDelete = $(this).closest(".row");
@@ -90,17 +89,16 @@ $(function () {
           $("#delete-modal").fadeOut();
         });
       } else {
-        showModalMessage("No tienes permisos para eliminar esta noticia.");
+        showModalMessage("No tens permisos per eliminar la noticia.");
       }
     });
   }
 
-  // Reemplazar alerta en initializeDroppable para la imagen
   function initializeDroppable() {
     $(".column").droppable({
       accept: ".tool",
-      drop: function (event, ui) {
-        const type = ui.draggable.data("type");
+      drop: function (e) {
+        const type = e.draggable.data("type");
         const hasImage = $(this).find("img").length > 0;
         const hasParagraph = $(this).find("p").length > 0;
 
@@ -140,12 +138,10 @@ $(function () {
     });
   }
 
-  // Crear fila solo si contiene datos
   $("#add-row").off("click").on("click", function () {
     const today = new Date().toISOString().split('T')[0];
     const authorName = loggedInUser ? loggedInUser.name : "Usuario Desconocido";
 
-    // Obtener el contador desde localStorage, o inicializarlo si no existe
     let postId = localStorage.getItem("postCounter");
     if (!postId) {
       postId = 1; 
@@ -153,7 +149,6 @@ $(function () {
       postId = parseInt(postId) + 1; 
     }
 
-    // Guarda el nuevo contador en localStorage para el siguiente post
     localStorage.setItem("postCounter", postId);
 
     console.log("Generando nueva noticia con postId:", postId);
@@ -182,7 +177,7 @@ $(function () {
     initializeDeleteButtons();
   });
 
-  // Guardar configuración
+  // Guarda sa configuracio
   $("#save-config").on("click", function () {
     const rows = [];
     $(".row").each(function () {
@@ -231,7 +226,7 @@ $(function () {
     showModalMessage("Configuración guardada en el navegador.");
   });
 
-  // Cargar configuración
+  // Carrega sa configuració
   $("#load-config").on("click", function () {
     const config = localStorage.getItem("postBuilderConfig");
     if (!config) {
@@ -281,12 +276,10 @@ $(function () {
     initializeDroppable();
   });
 
-  // Editar Noticia
+  // Edita la noticia
   $(".row-container").on("click", ".edit-row-btn", function () {
     const currentRowToEdit = $(this).closest(".row");
     const postId = currentRowToEdit.data("id"); 
-  
-    console.log("Intentando editar noticia con postId:", postId);
   
     let savedPosts = JSON.parse(localStorage.getItem("postBuilderConfig"));
     const postIndex = savedPosts.findIndex(post => post.id === postId);
@@ -299,8 +292,6 @@ $(function () {
       $("#editContent").val(post.columns[0] && post.columns[0][0] && post.columns[0][0].content || "");
       $("#editAuthor").val(post.header.author);
       $("#editCreationDate").val(post.header.date);
-  
-      // Pasar el ID de la noticia al modal para asegurarnos de que se guarde correctamente
       $("#editModal").data("postId", postId); 
       $("#editModal").fadeIn();
     } else {
@@ -308,7 +299,7 @@ $(function () {
     }
   });
 
-  // Guardar cambios del modal
+  // Canvis guardats del popup
   $("#editForm").on("submit", function (e) {
     e.preventDefault();
   
@@ -328,7 +319,7 @@ $(function () {
         currentRowToEdit.find(".column").append(`<div class="element"><p>${newContent}</p></div>`);
       }
   
-      // Actualizar la imagen si se ha cambiado
+      // Que s'actualitzi la imatge quan es canvii
       const newImageSrc = $("#editImagePreview").attr("src");
       const imageElement = currentRowToEdit.find(".column").find("img");
       

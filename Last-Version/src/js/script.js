@@ -1,7 +1,4 @@
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
-import { app } from "./firebase.js";
-
-const db = getFirestore(app);
+import { getAuthenticatedUser } from "./firebase.js";
 
 const menuIcon = document.querySelector('.menu-icon');
 const mobileNav = document.querySelector('.mobile-nav');
@@ -12,38 +9,31 @@ const captionText = document.getElementById('modal-caption');
 const closeBtn = document.getElementsByClassName("close")[0];
 
 if (menuIcon) {
-    menuIcon.addEventListener('click', function() {
+    menuIcon.addEventListener('click', function () {
         mobileNav.classList.toggle('active');
     });
 }
 
-$(document).ready(async function() {
-    const userId = sessionStorage.getItem("loggedInUserId");
-    if (userId) {
-        try {
-            const userRef = doc(db, "users", userId);
-            const userSnap = await getDoc(userRef);
-            if (userSnap.exists()) {
-                $('#login-btn').hide();
-                return;
-            }
-        } catch (error) {
-            console.error("Error intentat en obtenir a l\'usuari autenticat:", error);
-        }
+$(document).ready(async function () {
+    const user = await getAuthenticatedUser();
+
+    if (user) {
+        $('#login-btn').hide();
+    } else {
+        $('#login-btn').show();
     }
-    $('#login-btn').show();
 });
 
 if (window.location.pathname.includes('porfolio.html')) {
     images.forEach((img) => {
-        img.onclick = function() {
+        img.onclick = function () {
             modal.style.display = "flex";
             modalImg.src = this.src;
             captionText.innerHTML = this.nextElementSibling.innerHTML;
-        }
+        };
     });
 
-    closeBtn.onclick = function() {
+    closeBtn.onclick = function () {
         modal.style.display = "none";
-    }
+    };
 }

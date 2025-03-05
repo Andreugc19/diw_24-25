@@ -1,9 +1,6 @@
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
-import { app } from "./firebase.js";
+import { createUsers } from "./firebase.js";
 
-const db = getFirestore(app);
-
-$(document).ready(function() {
+$(document).ready(function () {
     const container = $('<div>').addClass('container');
     const imageBackground = $('<div>').addClass('image-background');
     const formContainer = $('<div>').addClass('form-container');
@@ -11,7 +8,7 @@ $(document).ready(function() {
     const backButton = $('<a>').attr('href', 'admin.html').addClass('back-button').html('<i class="fas fa-arrow-left"></i>');
     const profileIcon = $('<div>').addClass('profile-icon').html('<i class="fas fa-user"></i>');
 
-    const form = $('<form>').attr('id', 'create-user-form').on('submit', async function(event) {
+    const form = $('<form>').attr('id', 'create-user-form').on('submit', async function (event) {
         event.preventDefault();
 
         const name = $('#name').val().trim();
@@ -25,25 +22,14 @@ $(document).ready(function() {
             return;
         }
 
-        const defaultPassword = "Ramis.20";
-        const salt = CryptoJS.lib.WordArray.random(128/8).toString();
-        const hashedPassword = CryptoJS.SHA256(defaultPassword + salt).toString();
+        const userData = { name, email, editUsers, editNews, editBoneFiles, active };
 
-        try {
-            await addDoc(collection(db, "users"), {
-                name: name,
-                email: email,
-                password_hash: hashedPassword,
-                salt: salt,
-                edit_users: editUsers,
-                edit_news: editNews,
-                edit_bone_files: editBoneFiles,
-                active: active,
-                is_first_login: true
-            });
+        const success = await createUsers(userData);
+
+        if (success) {
             window.location.href = 'admin.html';
-        } catch (error) {
-            console.error('Error creant a l\'usuari:', error);
+        } else {
+            console.error("Error al crear el usuario.");
         }
     });
 
@@ -64,7 +50,7 @@ $(document).ready(function() {
 
     form.append(
         createInputContainer('Nom', 'name', 'text', 'Nom', 'name', 'fas fa-user'),
-        createInputContainer('Email', 'email', 'email', 'Email', 'email', 'fas fa-envelope'),
+        createInputContainer('Email', 'email', 'email', 'Email', 'email', 'fas fa-envelope')
     );
 
     const createCheckboxContainer = (labelText, id) => {

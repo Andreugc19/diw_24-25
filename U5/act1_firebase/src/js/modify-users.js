@@ -1,9 +1,6 @@
-import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
-import { app } from "./firebase.js";
+import { getUserById, updateUser } from "./firebase.js";
 
-const db = getFirestore(app);
-
-$(document).ready(async function() {
+$(document).ready(async function () {
     const container = $('<div>').addClass('container');
     const imageBackground = $('<div>').addClass('image-background');
     const formContainer = $('<div>').addClass('form-container');
@@ -11,7 +8,7 @@ $(document).ready(async function() {
     const backButton = $('<a>').attr('href', 'admin.html').addClass('back-button').html('<i class="fas fa-arrow-left"></i>');
     const profileIcon = $('<div>').addClass('profile-icon').html('<i class="fas fa-user"></i>');
 
-    const form = $('<form>').attr('id', 'modify-user-form').on('submit', async function(event) {
+    const form = $('<form>').attr('id', 'modify-user-form').on('submit', async function (event) {
         event.preventDefault();
 
         const name = $('#name').val().trim();
@@ -28,34 +25,26 @@ $(document).ready(async function() {
 
         const urlParams = new URLSearchParams(window.location.search);
         const userId = urlParams.get('userId');
-        const userRef = doc(db, "users", userId);
-        const userSnap = await getDoc(userRef);
-
-        if (!userSnap.exists()) {
-            return;
-        }
 
         const updateData = {
-            name: name,
-            email: email,
+            name,
+            email,
             edit_users: editUsers,
             edit_news: editNews,
             edit_bone_files: editBoneFiles,
-            active: active
+            active
         };
 
         if (password) {
-            const salt = CryptoJS.lib.WordArray.random(128/8).toString();
-            const hashedPassword = CryptoJS.SHA256(password + salt).toString();
-            updateData.password_hash = hashedPassword;
-            updateData.salt = salt;
+            updateData.password = password;
         }
 
-        try {
-            await updateDoc(userRef, updateData);
+        const success = await updateUser(userId, updateData);
+
+        if (success) {
             window.location.href = 'admin.html';
-        } catch (error) {
-            console.error('Error modificant a l\'usuari:', error);
+        } else {
+            console.error("Error al modificar el usuario.");
         }
     });
 
@@ -105,15 +94,13 @@ $(document).ready(async function() {
     async function loadUserData() {
         const urlParams = new URLSearchParams(window.location.search);
         const userId = urlParams.get('userId');
-        const userRef = doc(db, "users", userId);
-        const userSnap = await getDoc(userRef);
+        const user = await getUserById(userId);
 
-        if (!userSnap.exists()) {
+        if (!user) {
             alert("Usuari no trobat.");
             return;
         }
 
-        const user = userSnap.data();
         $('#name').val(user.name);
         $('#email').val(user.email);
         $('#edit-users').prop('checked', user.edit_users);

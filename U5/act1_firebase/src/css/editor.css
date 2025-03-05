@@ -281,9 +281,40 @@ button:hover {
   color: #555;
 }
 .post-actions {
-  display: flex; 
+  display: flex;
   justify-content: space-between;
-  margin-top: 10px; 
+  align-items: center;
+  padding: 10px;
+}
+.left-actions {
+  flex: 1;
+  text-align: left;
+}
+.right-actions {
+  flex: 1;
+  text-align: right;
+}
+.post-actions button {
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+.publish-news-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+.publish-news-btn:hover {
+  background-color: #45a049;
+}
+.unpublish-news-btn {
+  background-color: #848484;
+  color: white;
+}
+
+.unpublish-news-btn:hover {
+  background-color: #6b6b6b;
 }
 .row-container {
   margin-bottom: 20px;

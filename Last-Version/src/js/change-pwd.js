@@ -1,7 +1,4 @@
-import { getFirestore, doc, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
-import { app } from "./firebase.js";
-
-const db = getFirestore(app);
+import { updateUserPassword } from "./firebase.js";
 
 async function changePassword(event) {
     event.preventDefault();
@@ -34,30 +31,17 @@ async function changePassword(event) {
         return false;
     }
 
-    try {
-        const users = doc(db, "users", userId);
-        const userSnap = await getDoc(users);
+    const success = await updateUserPassword(userId, newPassword);
 
-        if (!userSnap.exists()) {
-            window.location.href = "login.html";
-            return false;
-        }
-
-        const salt = CryptoJS.lib.WordArray.random(128 / 8).toString();
-        const hashedPassword = CryptoJS.SHA256(newPassword + salt).toString();
-
-        await updateDoc(users, {
-            password_hash: hashedPassword,
-            salt: salt,
-            is_first_login: false
-        });
-
+    if (success) {
         sessionStorage.removeItem("loggedInUserId");
-        window.location.href
-        return true;
-    } catch (error) {
-        console.error("Error actualitzant la contrasenya", error);
-        return false;
+        window.location.href = "login.html";
+    } else {
+        errorMessage.textContent = 'Error al actualizar la contrasenya. Intenta de nuevo.';
+        errorMessage.style.display = 'block';
     }
+
+    return success;
 }
+
 window.changePassword = changePassword;
